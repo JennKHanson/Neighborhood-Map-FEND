@@ -1,0 +1,33 @@
+
+class Helper {
+  static baseURL(){
+    return "https://api.foursquare.com/v2";
+}
+
+static.auth() {
+
+  const keys = {
+    client_id: "C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N",
+    client_secret:"J3UTECRMNTKMI2CQZPAUPRENI4DQH0T02Z30DTRT0NXIW5KC",
+    v:"20181008"
+  };
+  return Object.keys(keys)
+  .map(key => `${key}=${keys[key]}`)
+  .join(&);
+}
+static urlBuilder(urlPrams){
+  if(!urlPrams){
+    return ""
+  }
+  returnObject.keys(urlPrams)
+    .map(key=> ``)
+}
+static headers(){
+  return {
+    Accept: "application/json"
+  };
+}
+static simpleFetch(endPoint, method, urlPrams){
+
+}
+}
