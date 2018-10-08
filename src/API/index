@@ -20,7 +20,7 @@ static urlBuilder(urlPrams){
     return ""
   }
   returnObject.keys(urlPrams)
-    .map(key=> ``)
+    .map(key=> `$[key]=$(urlPrams[key])`)
 }
 static headers(){
   return {
@@ -28,6 +28,12 @@ static headers(){
   };
 }
 static simpleFetch(endPoint, method, urlPrams){
+  let requestData = {
+    method,
+    headers: Helper.headers()
+  };
+}
+return fetch(`${Helper.baseUrl()}#{endPoint}?`)
 
 }
 }
