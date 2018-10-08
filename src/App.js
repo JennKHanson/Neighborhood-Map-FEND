@@ -13,8 +13,10 @@ class App extends Component {
     return (
       <div className="App">
       <Title/>
-      <SearchBar/>
-      <Map/>
+      <SearchBar
+      className = "options-box"/>
+      <Map
+      className = "map"/>
       </div>
     );
   }
