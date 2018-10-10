@@ -2,12 +2,13 @@ class Helper {
   static baseURL(){
     return "https://api.foursquare.com/v2";
 }
-static auth() {
+static auth(){
   const keys = {
     client_id: "C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N",
     client_secret:"J3UTECRMNTKMI2CQZPAUPRENI4DQH0T02Z30DTRT0NXIW5KC",
     v:"20181008"
   };
+  //joint client_id with client_secret and return as string
   return Object.keys(keys)
   .map(key => `${key}=${keys[key]}`)
   .join("&");
@@ -43,7 +44,7 @@ return fetch(
 }
 export default class SquareAPI {
   static search(urlPrams){
-    return Helper.simpleFetch("/venues/search", "GET", urlPrams);
+    return Helper.simpleFetch(`/venues/search`, "GET", urlPrams);
 
   }
 
