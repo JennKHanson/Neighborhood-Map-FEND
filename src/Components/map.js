@@ -10,7 +10,7 @@
 import React, {Component} from "react"
 //import { compose, withProps } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
-import SquareAPI from './API/';
+//import SquareAPI from "../API/";
 
 
 const MyMapComponent = withScriptjs(
