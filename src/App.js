@@ -7,11 +7,11 @@ import './App.css';
 import Map from './Components/map';
 import Title from './Components/title';
 import SearchBar from './Components/search-bar';
-//import SquareAPI from "./API/index"
+import SquareAPI from "./API/index"
 
 class App extends Component {
 
-  /*componentDidMount() {
+  componentDidMount() {
     SquareAPI.search({
       near: "Indianapolis, IN",
       query: "tacos",
@@ -19,7 +19,7 @@ class App extends Component {
     }).then(results => {
       console.log(results)
     });
-  }*/
+  }
 
 
   render() {
