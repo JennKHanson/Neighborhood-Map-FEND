@@ -15,6 +15,7 @@ static auth() {
   .map(key => `${key}=${keys[key]}`)
   .join("&");
 }
+
 static urlBuilder(urlPrams){
   if(!urlPrams){
     return ""
@@ -41,10 +42,10 @@ return fetch(
   requestData
 ).then(res => res.json());
 }
-}/*
+}
 export default class SquareAPI {
   static search(urlPrams){
-    return Helper.simpleFetch(`/venues/search`, "GET", urlPrams);
+    return Helper.simpleFetch("/venues/search", "GET", urlPrams);
 
   }
   static getVenueDetails(VENUE_ID){
@@ -55,4 +56,4 @@ export default class SquareAPI {
     return Helper.simpleFetch(`/venues/${VENUE_ID}/photos`, "GET");
 
   }
-}*/
+}
