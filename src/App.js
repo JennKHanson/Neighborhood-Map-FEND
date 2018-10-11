@@ -50,7 +50,8 @@ class App extends Component {
       {...this.state}
       />
       <SearchBar
-      className = "options-box"/>
+      className = "options-box"
+      />
       </div>
     );
   }
