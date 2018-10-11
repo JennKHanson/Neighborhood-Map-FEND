@@ -44,14 +44,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <div className="container">
       <Title/>
+
       <Map
       className = "map"
       {...this.state}
       />
+
       <SearchBar
       className = "options-box"
       />
+      </div>
       </div>
     );
   }

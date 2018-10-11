@@ -24,15 +24,16 @@ class SearchBar extends React.Component {
     //33:39 https://drive.google.com/drive/u/0/folders/1QpvhhOn_FzgB8k7TBM1jolOXdpbmbOdb
 
     return(
-<div className="container">
-    <div className = "options-box">
-    <ul>
+
+
+    <div className = "location-list">
+    <ol>
     {locations.map(location => (
       <li key={location.name}>{location.name}</li>
     ))}
-    </ul>
+    </ol>
     </div>
-  </div>
+
 )}
 }
 
