@@ -18,6 +18,7 @@ const MyMapComponent = withScriptjs(
   <GoogleMap
   defaultZoom={10}
   defaultCenter={{ lat: 39.76840, lng: -86.158068 }}>
+
   {props.isMarkerShown && (
     <Marker position ={{lat: 39.734314, lng: -86.14841}}/>
   )}
@@ -37,6 +38,7 @@ export default class Map extends Component {
         //containerElement={<div style={{ height: `400px` }} />}
         mapElement={<div style={{ height: `80%` }} />}
       />
+  
 
     );
   }

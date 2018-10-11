@@ -35,7 +35,7 @@ static simpleFetch(endPoint, method, urlPrams){
   };
 
 return fetch(
-  `${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder}(
+  `${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(
     urlPrams
   )}`,
   requestData
