@@ -10,17 +10,36 @@ import SearchBar from './Components/search-bar';
 import SquareAPI from "./API/"
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state={
+      venue: [],
+      markers: [],
+      center: [],
+      zoom: 10
+    };
+  }
 
   componentDidMount() {
     SquareAPI.search({
       near: "Indianapolis, IN",
-      query: "tacos",
-      limit: 5
+      query: "tennis",
+      limit: 1
     }).then(results => {
-      console.log(results)
+      const { venues } = results.response;
+      const { center } = results.response.geocode.feature.geometry;
+      const markers = venues.map(venue => {
+        return{
+          lat: venue.location.lat,
+          lng: venue.location.lng,
+          isOpen:false,
+          isVisible:false
+        };
+      });
+      this.setState({ venues, center, markers });
+       console.log(results)
     });
   }
-
 
   render() {
     return (
@@ -28,6 +47,7 @@ class App extends Component {
       <Title/>
       <Map
       className = "map"
+      {...this.state}
       />
       <SearchBar
       className = "options-box"/>
