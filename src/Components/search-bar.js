@@ -26,6 +26,7 @@ class SearchBar extends React.Component {
     return(
     <div className = "location-list">
     <ol>
+      <input type="text" className="search-bar" placeholder="Search.."/>
     {locations.map(location => (
       <li key={location.name}>{location.name}</li>
     ))}
