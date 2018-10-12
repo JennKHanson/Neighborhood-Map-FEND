@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './Components/map';
 import Title from './Components/title';
-import SearchResults from './Components/search-results';
+import SearchBar from './Components/search-bar';
 import SquareAPI from "./API/"
 
 class App extends Component {
@@ -52,7 +52,7 @@ class App extends Component {
       {...this.state}
       />
 
-      <SearchResults
+      <SearchBar
       className = "options-box"
       />
       </div>
