@@ -24,8 +24,6 @@ class SearchBar extends React.Component {
     //33:39 https://drive.google.com/drive/u/0/folders/1QpvhhOn_FzgB8k7TBM1jolOXdpbmbOdb
 
     return(
-
-
     <div className = "location-list">
     <ol>
     {locations.map(location => (
