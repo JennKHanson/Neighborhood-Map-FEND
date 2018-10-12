@@ -25,12 +25,14 @@ class SearchBar extends React.Component {
 
     return(
     <div className = "location-list">
-    <ol>
-      <input type="text" className="search-bar" placeholder="Search.."/>
+    <div>
+    <input type="text" className="search-bar" placeholder="Search.."/>
+    <ul>
     {locations.map(location => (
-      <li key={location.name}>{location.name}</li>
+      <li key={location.name} style={{listStyleType:"none"}}>{location.name}</li>
     ))}
-    </ol>
+    </ul>
+    </div>
     </div>
 
 )}
