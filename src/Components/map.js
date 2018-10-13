@@ -18,6 +18,7 @@ import GoogleMapReact from 'google-map-react'
 const Location = ({text}) => <div>{text}</div>;
 class Map extends Component {
 
+
   static defaultProps = {
     center: {
       lat: 39.76840,
@@ -53,15 +54,18 @@ class Map extends Component {
       <Location
       lat={39.734314}
       lng={-86.14841}
-      /*lat={this.props.loclat}
-      lng={this.props.loclng}*/
-      text={text}
-      /*text={locations.map(location =>(
-        <div key{...location.name}>{location.name}{location.location.lat}{location.location.lng}</div>
-      ))}*/
-
+      text={'Garfield Park'}
       src={'http://res.cloudinary.com/dpus3ns57/image/upload/v1539446785/2000px-Map_marker.svg.png'}
       />
+      <Location
+      lat={39.854505}
+      lng={ -86.299588}
+      text={'Eagle Creek'}
+      src={'http://res.cloudinary.com/dpus3ns57/image/upload/v1539446785/2000px-Map_marker.svg.png'}
+      />
+
+
+
       </GoogleMapReact>
       </div>
     );
