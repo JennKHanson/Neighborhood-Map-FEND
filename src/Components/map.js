@@ -23,7 +23,9 @@ class Map extends Component {
     },
     zoom: 11
   };
+
   render(){
+
     return (
       <div className={'map'}>
       <GoogleMapReact
@@ -34,8 +36,8 @@ class Map extends Component {
       <Location
       lat={39.734314}
       lng={-86.14841}
-      text={'Garfield Park'}
-      imgURL={'http://res.cloudinary.com/dpus3ns57/image/upload/v1539446785/2000px-Map_marker.svg.png'}
+      text={'test'}
+      src={'http://res.cloudinary.com/dpus3ns57/image/upload/v1539446785/2000px-Map_marker.svg.png'}
       />
       </GoogleMapReact>
       </div>
