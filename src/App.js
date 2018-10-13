@@ -7,39 +7,11 @@ import './App.css';
 import Map from './Components/map';
 import Title from './Components/title';
 import SearchResults from './Components/search-results';
-import SquareAPI from "./API/"
+//import SquareAPI from "./API/"
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state={
-      venue: [],
-      markers: [],
-      center: [],
-      zoom: 10
-    };
-  }
 
-  componentDidMount() {
-    SquareAPI.search({
-      near: "Indianapolis, IN",
-      query: "tennis",
-      limit: 1
-    }).then(results => {
-      const { venues } = results.response;
-      const { center } = results.response.geocode.feature.geometry;
-      const markers = venues.map(venue => {
-        return{
-          lat: venue.location.lat,
-          lng: venue.location.lng,
-          isOpen:false,
-          isVisible:false
-        };
-      });
-      this.setState({ venues, center, markers });
-       console.log(results)
-    });
-  }
+
 
   render() {
     return (
@@ -47,9 +19,8 @@ class App extends Component {
       <div className="container">
       <Title/>
 
-      <Map
+     <Map
       className = "map"
-      {...this.state}
       />
 
       <SearchResults
