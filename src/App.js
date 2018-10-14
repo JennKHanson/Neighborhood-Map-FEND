@@ -18,7 +18,7 @@ class App extends Component {
     {index: 'Eagle', name: 'Eagle Creek', location: {lat: 39.854505, lng: -86.299588 }},
     {index: 'Broad', name: 'Broad Ripple Park', location: {lat: 39.868618, lng: -86.133435}},
     {index: 'Sahm', name: 'Sahm Park', location: {lat: 39.91976, lng: -86.053424}},
-    {index: 'Holliday', name: 'Holliday Park', location: {lat: 39.870767, lng: 86.165001}},
+    {index: 'Holliday', name: 'Holliday Park', location: {lat: 39.870767, lng: -86.165001}},
     ]
 
   }
@@ -30,7 +30,6 @@ class App extends Component {
       <Title/>
       <div className="map">
      <MapContainer
-      className = "map"
       locations = {this.state.locations}
       />
       </div>
