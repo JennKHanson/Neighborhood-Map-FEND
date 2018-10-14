@@ -1,6 +1,6 @@
 /**
 * Map Component
-*/
+*///AIzaSyC1S5nF5e6gJzghv2fAwIGN7IWJuQVzJMg
 /** NOTE: RESOURCES
 * https://google-developers.appspot.com/maps/documentation/utils/geocoder/#place_id%3DChIJxeXDEmhaa4gRGN2-NTGZSK0
 * https://tomchentw.github.io/react-google-maps/
@@ -29,23 +29,18 @@ class Map extends Component {
 
   render(){
 console.log ('Props', this.props)
-    /*let text = this.props.name;*/
-    /*let text = locations.map(location =>(
-      <div key{...location.name}>{location.name}</div>
-    ))*/
-
 
     return (
       <div className={'map'}>
       <GoogleMapReact
-      bootstrapURLKeys={{key: 'AIzaSyC1S5nF5e6gJzghv2fAwIGN7IWJuQVzJMg'}}
+      bootstrapURLKeys={{key: ''}}
       defaultCenter={this.props.center}
       defaultZoom={this.props.zoom}
       >
       <Location
       lat={39.734314}
       lng={-86.14841}
-      
+
       text={this.props.locations.map(location => (
         <li key={location.name} style={{listStyleType:"none"}}>{location.name}</li>
       ))}
