@@ -4,9 +4,11 @@
 
 import React, { Component } from 'react';
 import './App.css';
-import Map from './Components/map';
+//import Map from './Components/map';
 import Title from './Components/title';
 import SearchResults from './Components/search-results';
+import MapContainer from './Components/map';
+
 //import SquareAPI from "./API/"
 
 class App extends Component {
@@ -26,11 +28,12 @@ class App extends Component {
       <div className="App">
       <div className="container">
       <Title/>
-
-     <Map
+      <div className="map">
+     <MapContainer
       className = "map"
       locations = {this.state.locations}
       />
+      </div>
 
       <SearchResults
       className = "options-box"

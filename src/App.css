@@ -62,12 +62,14 @@ h1 {
   margin: auto;
 }
 
+.search-bar-container {
+  top: 400px;
+}
 .search-bar {
   width: 200px;
   height: 30px;
   border-radius: 4px;
-  margin: 20px, 0, 10px, 0;
-
+  margin: 200px, 0, 10px, 0;
 }
 
 .location-list {
@@ -77,10 +79,14 @@ h1 {
   line-height: 25px;
   margin-top: 425px;
   width: 300px;
+  height: 20%;
   flex-direction: column;
   order: 3;
   display: flex;
   align-items: center;
   padding-bottom: 20px;
   padding-top: 20px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }

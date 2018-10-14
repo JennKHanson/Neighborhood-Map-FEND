@@ -20,15 +20,13 @@ class SearchResults extends React.Component {
 
     return(
 
-    <div>
-    <SearchBar/>
-    <ul className='location-list'>
-
+    <ul  className='location-list'>
+<SearchBar/>
     {this.props.locations.map(location => (
       <li key={location.name} style={{listStyleType:"none"}}>{location.name}</li>
     ))}
     </ul>
-    </div>
+
 
 
 )}

@@ -9,47 +9,29 @@
 */
 
 import React, {Component} from 'react'
-import GoogleMapReact from 'google-map-react'
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 //import LocationData from 'react'
 //import { compose, withProps } from "recompose"
 //import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 //import SquareAPI from "../API/";
 
-const Location = ({text}) => <div>{text}</div>;
-class Map extends Component {
-
-  static defaultProps = {
-    center: {
-      lat: 39.76840,
-      lng: -86.158068
-    },
-    zoom: 11
-  };
-
-  render(){
-console.log ('Props', this.props)
-
-    return (
-      <div className={'map'}>
-      <GoogleMapReact
-      bootstrapURLKeys={{key: ''}}
-      defaultCenter={this.props.center}
-      defaultZoom={this.props.zoom}
-      >
-      <Location
-      lat={39.734314}
-      lng={-86.14841}
-
-      text={this.props.locations.map(location => (
-        <li key={location.name} style={{listStyleType:"none"}}>{location.name}</li>
-      ))}
-      src={'http://res.cloudinary.com/dpus3ns57/image/upload/v1539446785/2000px-Map_marker.svg.png'}
-      />
-
-      </GoogleMapReact>
-      </div>
-    );
+//const Location = ({text}) => <div>{text}</div>;
+export class MapContainer extends Component {
+  render() {
+    return(
+      <Map google={this.props.google} zoom={14} >
+        <Marker onClick={this.onMarkerClick}
+              name='{Current Location}' />
+        <InfoWindow onClose={this.onInfoWindowClose}>
+          <div>
+            <h1></h1>
+          </div>
+          </InfoWindow>
+        </Map>
+    )
   }
 }
-export default Map
+export default GoogleApiWrapper({
+  apiKey: `AIzaSyC1S5nF5e6gJzghv2fAwIGN7IWJuQVzJMg`
+})(MapContainer)
