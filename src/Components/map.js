@@ -10,6 +10,7 @@
 
 import React, {Component} from 'react'
 import GoogleMapReact from 'google-map-react'
+
 //import LocationData from 'react'
 //import { compose, withProps } from "recompose"
 //import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
@@ -17,7 +18,6 @@ import GoogleMapReact from 'google-map-react'
 
 const Location = ({text}) => <div>{text}</div>;
 class Map extends Component {
-
 
   static defaultProps = {
     center: {
@@ -28,21 +28,12 @@ class Map extends Component {
   };
 
   render(){
-    const locations = [
-    {name: 'Garfield Park', location: {lat:39.735663, lng:-86.147061}},
-    {name: 'Eagle Creek', location: {lat: 39.854505, lng: -86.299588 }},
-    {name: 'Broad Ripple Park', location: {lat: 39.868618, lng: -86.133435}},
-    {name: 'Sahm Park', location: {lat: 39.91976, lng: -86.053424}},
-    {name: 'Holliday Park', location: {lat: 39.870767, lng: 86.165001}},
-    ];
+console.log ('Props', this.props)
     /*let text = this.props.name;*/
-    let text = locations.map(location =>(
+    /*let text = locations.map(location =>(
       <div key{...location.name}>{location.name}</div>
-    ))
-
-    /*let loclat = locations.map(location =>(
-      <div key{...location.lat}>{location.lat}</div>
     ))*/
+
 
     return (
       <div className={'map'}>
@@ -54,17 +45,12 @@ class Map extends Component {
       <Location
       lat={39.734314}
       lng={-86.14841}
-      text={'Garfield Park'}
+      
+      text={this.props.locations.map(location => (
+        <li key={location.name} style={{listStyleType:"none"}}>{location.name}</li>
+      ))}
       src={'http://res.cloudinary.com/dpus3ns57/image/upload/v1539446785/2000px-Map_marker.svg.png'}
       />
-      <Location
-      lat={39.854505}
-      lng={ -86.299588}
-      text={'Eagle Creek'}
-      src={'http://res.cloudinary.com/dpus3ns57/image/upload/v1539446785/2000px-Map_marker.svg.png'}
-      />
-
-
 
       </GoogleMapReact>
       </div>
