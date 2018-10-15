@@ -87,7 +87,7 @@ export class MapContainer extends Component {
         //onClose={this.onInfoWindowClose}
         >
           <div>
-            <h1>{this.state.selectedPlace.name}</h1>
+            <h1 className='marker-info'>{this.state.selectedPlace.name}</h1>
           </div>
           </InfoWindow>
         </Map>
