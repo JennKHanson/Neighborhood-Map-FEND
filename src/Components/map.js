@@ -31,26 +31,31 @@ export class MapContainer extends Component {
     {index: 'Holliday', name: 'Holliday Park', location: {lat: 39.870767, lng: -86.165001}},
     ]
 };
+
+
+
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true
+      showingInfoWindow: true,
+
     });
 
   onMapClicked = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
+
       })
+
     }
   }
   render() {
 
   //{console.log(this.state.locations)}
     return(
-
 
       <Map
       google={this.props.google}
@@ -64,6 +69,7 @@ export class MapContainer extends Component {
       }}
 
       >
+
         <Marker
         onClick={this.onMarkerClick}
         title={'test test'}
@@ -71,32 +77,45 @@ export class MapContainer extends Component {
         position={{
           lat: (this.state.locations[0].location.lat),
           lng: (this.state.locations[0].location.lng)
-        }}
+        }
+      }
         //position={{lat: 39.735663 , lng: -86.147061}}
         />
         <Marker
         onClick={this.onMarkerClick}
         title={'test test'}
-        name={'Eagle Creek'}
-        position={{lat: 39.854505 , lng: -86.299588}}
+        name={this.state.locations[1].name}
+        position={{
+          lat: (this.state.locations[1].location.lat),
+          lng: (this.state.locations[1].location.lng)
+        }}
         />
         <Marker
         onClick={this.onMarkerClick}
         title={'test test'}
-        name={'Broad Ripple Park'}
-        position={{lat: 39.868618 , lng: -86.133435}}
+        name={this.state.locations[2].name}
+        position={{
+          lat: (this.state.locations[2].location.lat),
+          lng: (this.state.locations[2].location.lng)
+        }}
         />
         <Marker
         onClick={this.onMarkerClick}
         title={'test test'}
-        name={'Sahm Park'}
-        position={{lat: 39.91976, lng: -86.053424}}
+        name={this.state.locations[3].name}
+        position={{
+          lat: (this.state.locations[3].location.lat),
+          lng: (this.state.locations[3].location.lng)
+        }}
         />
         <Marker
         onClick={this.onMarkerClick}
         title={'test test'}
-        name={'Holliday Park'}
-        position={{lat: 39.870767, lng: -86.165001}}
+        name={this.state.locations[4].name}
+        position={{
+          lat: (this.state.locations[4].location.lat),
+          lng: (this.state.locations[4].location.lng)
+        }}
         />
         <InfoWindow
         marker={this.state.activeMarker}
