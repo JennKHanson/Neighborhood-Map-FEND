@@ -24,19 +24,21 @@ class App extends Component {
   }
 
   render() {
+
     return (
+      //console.log(this.state.locations),
       <div className="App">
       <div className="container">
       <Title/>
       <div className="map">
      <MapContainer
-      locations = {this.state.locations}
+
       />
       </div>
 
       <SearchResults
       className = "options-box"
-      locations = {this.state.locations}
+
       />
       </div>
       </div>

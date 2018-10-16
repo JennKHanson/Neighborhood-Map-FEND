@@ -22,6 +22,14 @@ export class MapContainer extends Component {
     showingInfoWindow: false,
     activeMarker:{},
     selectedPlace:{},
+
+    locations:[
+    {index: 'Garfield', name: 'Garfield Park', location: {lat:39.735663, lng:-86.147061}},
+    {index: 'Eagle', name: 'Eagle Creek', location: {lat: 39.854505, lng: -86.299588 }},
+    {index: 'Broad', name: 'Broad Ripple Park', location: {lat: 39.868618, lng: -86.133435}},
+    {index: 'Sahm', name: 'Sahm Park', location: {lat: 39.91976, lng: -86.053424}},
+    {index: 'Holliday', name: 'Holliday Park', location: {lat: 39.870767, lng: -86.165001}},
+    ]
 };
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -39,7 +47,11 @@ export class MapContainer extends Component {
     }
   }
   render() {
+
+  //{console.log(this.state.locations)}
     return(
+
+
       <Map
       google={this.props.google}
       onClick={this.onMapClicked}
@@ -48,14 +60,19 @@ export class MapContainer extends Component {
       initialCenter={{
         lat: 39.768403,
         lng: -86.158068
+
       }}
 
       >
         <Marker
         onClick={this.onMarkerClick}
         title={'test test'}
-        name={'Garfield Park'}
-        position={{lat: 39.735663 , lng: -86.147061}}
+        name={this.state.locations[0].name}
+        position={{
+          lat: (this.state.locations[0].location.lat),
+          lng: (this.state.locations[0].location.lng)
+        }}
+        //position={{lat: 39.735663 , lng: -86.147061}}
         />
         <Marker
         onClick={this.onMarkerClick}
@@ -91,6 +108,7 @@ export class MapContainer extends Component {
           </div>
           </InfoWindow>
         </Map>
+
     )
   }
 }
