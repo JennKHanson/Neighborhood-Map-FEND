@@ -1,7 +1,7 @@
 /**
 * App.js
 */
-
+/*https://www.npmjs.com/package/axios
 /*Client ID
 C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N
 Client Secret
@@ -30,15 +30,18 @@ class App extends Component {
   }
 
   getVenues = () => {
-    const endPoint = "https://api.foursquare.com/v2/venues/explore"
+    const endPoint = "https://api.foursquare.com/v2/venues/explore?";
+
     const parameters = {
       client_id: "C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N",
-      client_secret:"J3UTECRMNTKMI2CQZPAUPRENI4DQH0T02Z30DTRT0NXIW5KC",
+      client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
       query: "food",
-      near:"Indianapolis, IN",
+      near:"Indianapolis",
       limit: 1,
-      v: "20181210"
+      v: "20181018"
+
     }
+
 
     axios.get(endPoint + new URLSearchParams(parameters))
     .then(response => {
@@ -51,11 +54,11 @@ class App extends Component {
   }
 
   initMap = () => {
-  var map = new window.google.maps.Map(document.getElementById('map'), {
+  new window.google.maps.Map(document.getElementById('map'), {
   center: {lat: 39.768403, lng: -86.158068},
   zoom: 8
 })
-  }
+}
 
 render() {
   return (
@@ -68,7 +71,6 @@ render() {
     </div>
     <SearchResults
     className = "options-box"/>
-    />
     </div>
     </div>
   )
