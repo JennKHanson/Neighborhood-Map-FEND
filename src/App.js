@@ -18,6 +18,9 @@ import axios from 'axios'
 //import SquareAPI from "./API/"
 
 class App extends Component {
+  state = {
+    venues: []
+  }
 
   componentDidMount(){
     this.getVenues()
@@ -35,7 +38,7 @@ class App extends Component {
     const parameters = {
       client_id: "C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N",
       client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
-      query: "food",
+      query: "parks",
       near:"Indianapolis",
       limit: 1,
       v: "20181018"
@@ -45,7 +48,9 @@ class App extends Component {
 
     axios.get(endPoint + new URLSearchParams(parameters))
     .then(response => {
-      console.log(response)
+      this.setState({
+        venues: response.data.response.groups[0].items
+      })
     })
     .catch(error => {
       console.log("error! " + error)
