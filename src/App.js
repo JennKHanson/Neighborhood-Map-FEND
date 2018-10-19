@@ -20,18 +20,17 @@ import axios from 'axios'
 class App extends Component {
   state = {
     venues: []
+
   }
+
 
   componentDidMount(){
     this.getVenues()
-    this.renderMap()
-
   }
 
   renderMap = () => {
     loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyC1S5nF5e6gJzghv2fAwIGN7IWJuQVzJMg&v=3&callback=initMap")
      window.initMap = this.initMap
-
   }
 
   getVenues = () => {
@@ -42,7 +41,7 @@ class App extends Component {
       client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
       query: "parks",
       near:"Indianapolis",
-      limit: 1,
+      limit: 2,
       v: "20181018"
     }
 
@@ -50,7 +49,7 @@ class App extends Component {
     .then(response => {
       this.setState({
         venues: response.data.response.groups[0].items
-      })
+      }, this.renderMap())
 
     })
     .catch(error => {
@@ -58,17 +57,20 @@ class App extends Component {
     })
 
   }
-
   initMap = () => {
   const map = new window.google.maps.Map(document.getElementById('map'), {
   center: {lat: 39.768403, lng: -86.158068},
-  zoom: 8
+  zoom: 10
+})
+//forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
+this.state.venues.forEach(points => {
+//venue.location. lat lng
+  const marker = new window.google.maps.Marker({
+  position: {lat: points.venue.location.lat, lng: points.venue.location.lng},
+  map: map,
+  title: points.venue.name
 })
 
-  const marker = new window.google.maps.Marker({
-  position: {lat: 39.768403, lng: -86.158068},
-  map: map,
-  title: 'Indianapolis'
 })
 }
 
