@@ -25,11 +25,13 @@ class App extends Component {
   componentDidMount(){
     this.getVenues()
     this.renderMap()
+
   }
 
   renderMap = () => {
     loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyC1S5nF5e6gJzghv2fAwIGN7IWJuQVzJMg&v=3&callback=initMap")
      window.initMap = this.initMap
+
   }
 
   getVenues = () => {
@@ -42,15 +44,14 @@ class App extends Component {
       near:"Indianapolis",
       limit: 1,
       v: "20181018"
-
     }
-
 
     axios.get(endPoint + new URLSearchParams(parameters))
     .then(response => {
       this.setState({
         venues: response.data.response.groups[0].items
       })
+
     })
     .catch(error => {
       console.log("error! " + error)
@@ -59,9 +60,15 @@ class App extends Component {
   }
 
   initMap = () => {
-  new window.google.maps.Map(document.getElementById('map'), {
+  const map = new window.google.maps.Map(document.getElementById('map'), {
   center: {lat: 39.768403, lng: -86.158068},
   zoom: 8
+})
+
+  const marker = new window.google.maps.Marker({
+  position: {lat: 39.768403, lng: -86.158068},
+  map: map,
+  title: 'Indianapolis'
 })
 }
 
