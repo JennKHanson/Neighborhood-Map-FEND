@@ -19,7 +19,8 @@ import axios from 'axios'
 
 class App extends Component {
   state = {
-    venues: []
+    venues: [],
+    markers: []
 
   }
 
@@ -68,17 +69,35 @@ this.state.venues.forEach(points => {
   const marker = new window.google.maps.Marker({
   position: {lat: points.venue.location.lat, lng: points.venue.location.lng},
   map: map,
-  title: points.venue.name
+  title: points.venue.name,
+  animation: window.google.maps.Animation.DROP
 })
+//marker.push(this.state.markers);
 
 this.state.venues.forEach(infoBox => {
-  const infoWindow = new window.google.maps.InfoWindow({
+  /*const infowindow = new window.google.maps.InfoWindow({
     content: points.venue.name
-  })
+  })*/
+
+
+//const largeInfowindow = new window.google.maps.InfoWindow();
 
 marker.addListener('click', function(){
-  infoWindow.open(map, marker);
+  const largeInfowindow = new window.google.maps.InfoWindow();
+  populateInfoWindow(this, largeInfowindow);
 })
+
+function populateInfoWindow(marker, infowindow) {
+  if (infowindow.marker !== marker) {
+    infowindow.marker = marker;
+    infowindow.setContent('<div>' + points.venue.name + '</div>' +
+  '<div>' + points.venue.location.address + '</div>');
+    infowindow.open(map, marker);
+    infowindow.addListener('closeclick', function(){
+      infowindow.setMarker(null);
+    });
+  }
+}
 
 })
 /* points.venue.location.address*/
