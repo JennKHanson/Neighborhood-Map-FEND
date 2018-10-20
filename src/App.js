@@ -75,11 +75,13 @@ this.state.venues.forEach(infoBox => {
   const infoWindow = new window.google.maps.InfoWindow({
     content: points.venue.name
   })
+
 marker.addListener('click', function(){
   infoWindow.open(map, marker);
 })
 
 })
+/* points.venue.location.address*/
 /*this.state.venues.forEach(infoBox => {
   const infoWindow = new window.google.maps.InfoWindow({
     content: "hello"
