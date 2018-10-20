@@ -65,39 +65,44 @@ class App extends Component {
 })
 //forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
 this.state.venues.forEach(points => {
-//venue.location. lat lng
   const marker = new window.google.maps.Marker({
   position: {lat: points.venue.location.lat, lng: points.venue.location.lng},
   map: map,
   title: points.venue.name,
   animation: window.google.maps.Animation.DROP
 })
-//marker.push(this.state.markers);
 
-this.state.venues.forEach(infoBox => {
-  /*const infowindow = new window.google.maps.InfoWindow({
-    content: points.venue.name
-  })*/
+this.state.markers.push(marker);
 
-
-//const largeInfowindow = new window.google.maps.InfoWindow();
-
-marker.addListener('click', function(){
-  const largeInfowindow = new window.google.maps.InfoWindow();
-  populateInfoWindow(this, largeInfowindow);
-})
+//Marker Bounds??
+//https://classroom.udacity.com/nanodegrees/nd001/parts/f4471fff-fffb-4281-8c09-2478625c9597/modules/a2527452-bb9f-431c-bfa7-a20b17992650/lessons/8304370457/concepts/83122494450923
+/**
+this.state.markers.push(marker);
+const bounds = new window.google.maps.LatLngBounds();
+bounds.extend(this.state.markers[i].position);
+map.fitBounds(bounds);
+**/
 
 function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker !== marker) {
     infowindow.marker = marker;
-    infowindow.setContent('<div>' + points.venue.name + '</div>' +
-  '<div>' + points.venue.location.address + '</div>');
+    infowindow.setContent(
+      '<div>' + points.venue.name + '</div>' +
+      '<div>' + points.venue.location.address + '</div>');
     infowindow.open(map, marker);
     infowindow.addListener('closeclick', function(){
-      infowindow.setMarker(null);
+      infowindow.setMarker = null;
     });
   }
 }
+
+const largeInfowindow = new window.google.maps.InfoWindow();
+this.state.venues.forEach(infoBox => {
+marker.addListener('click', function(){
+  populateInfoWindow(this, largeInfowindow);
+
+})
+
 
 })
 /* points.venue.location.address*/
