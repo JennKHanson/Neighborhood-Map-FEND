@@ -88,7 +88,8 @@ marker.addListener('click', function(){
   populateInfoWindow(this, largeInfowindow);
   marker.animation = window.google.maps.Animation.BOUNCE;
   setTimeout(function(){ marker.setAnimation(null);}, 750);
-  //map.zoom = 11
+  this.map.setZoom(13);
+  this.map.setCenter(marker.position)
 });}(markerListener())
 }
 
@@ -102,6 +103,8 @@ function populateInfoWindow(marker, infowindow) {
     infowindow.open(map, marker);
     infowindow.addListener('closeclick', function(){
       infowindow.setMarker = null;
+      map.setZoom(10);
+      map.setCenter({lat: 39.768403, lng: -86.158068})
     });
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     setTimeout(() => marker.setAnimation(null), 750);
