@@ -24,7 +24,6 @@ class App extends Component {
 
   }
 
-
   componentDidMount(){
     this.getVenues()
   }
@@ -58,37 +57,55 @@ class App extends Component {
     })
 
   }
+
   initMap = () => {
   const map = new window.google.maps.Map(document.getElementById('map'), {
   center: {lat: 39.768403, lng: -86.158068},
   zoom: 10
 })
+
+const largeInfowindow = new window.google.maps.InfoWindow();
+//const bound = new window.google.maps.LatLngBounds(0);
+
+for (var i = 0; i < this.state.venues.length; i++){
+  var position = this.state.venues[i].venue.location;
+  var title = this.state.venues[i].venue.name;
+
 //forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
-this.state.venues.forEach(points => {
   const marker = new window.google.maps.Marker({
-  position: {lat: points.venue.location.lat, lng: points.venue.location.lng},
+  position: position,
   map: map,
-  title: points.venue.name,
-  animation: window.google.maps.Animation.DROP
-})
+  title: title,
+  animation: window.google.maps.Animation.DROP,
+  id: i
+});
 
 this.state.markers.push(marker);
 
+//this.state.venues.forEach(infoBox => {
+marker.addListener('click', function(){
+  populateInfoWindow(this, largeInfowindow);
+});
+
+//}
+//)
+
+}
 //Marker Bounds??
 //https://classroom.udacity.com/nanodegrees/nd001/parts/f4471fff-fffb-4281-8c09-2478625c9597/modules/a2527452-bb9f-431c-bfa7-a20b17992650/lessons/8304370457/concepts/83122494450923
 /**
 this.state.markers.push(marker);
 const bounds = new window.google.maps.LatLngBounds();
-bounds.extend(this.state.markers[i].position);
-map.fitBounds(bounds);
+window.bounds.extend(this.state.markers[i].position);
+map.fitBounds(window.bounds);
 **/
 
 function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker !== marker) {
     infowindow.marker = marker;
     infowindow.setContent(
-      '<div>' + points.venue.name + '</div>' +
-      '<div>' + points.venue.location.address + '</div>');
+      '<div>' +  + '</div>' +
+      '<div>' +  + '</div>');
     infowindow.open(map, marker);
     infowindow.addListener('closeclick', function(){
       infowindow.setMarker = null;
@@ -96,15 +113,8 @@ function populateInfoWindow(marker, infowindow) {
   }
 }
 
-const largeInfowindow = new window.google.maps.InfoWindow();
-this.state.venues.forEach(infoBox => {
-marker.addListener('click', function(){
-  populateInfoWindow(this, largeInfowindow);
-
-})
 
 
-})
 /* points.venue.location.address*/
 /*this.state.venues.forEach(infoBox => {
   const infoWindow = new window.google.maps.InfoWindow({
@@ -113,7 +123,8 @@ marker.addListener('click', function(){
   /*marker.addListener('click', function(){
     infowindow.open(map, marker);
   });*/
-})
+//}
+//)
 
 }
 
