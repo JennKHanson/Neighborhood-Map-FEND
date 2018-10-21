@@ -20,7 +20,6 @@ class App extends Component {
   state = {
     venues: [],
     markers: []
-
   }
 
   componentDidMount(){
@@ -89,6 +88,7 @@ marker.addListener('click', function(){
   populateInfoWindow(this, largeInfowindow);
   marker.animation = window.google.maps.Animation.BOUNCE;
   setTimeout(function(){ marker.setAnimation(null);}, 750);
+  //map.zoom = 11
 });}(markerListener())
 }
 
@@ -122,7 +122,7 @@ render() {
     </div>
     <SearchResults
     className = "options-box"
-
+    locations = {this.state.venues}
     />
     </div>
     </div>
