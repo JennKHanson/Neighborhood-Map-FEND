@@ -94,7 +94,6 @@ marker.addListener('click', function(){
 }
 
 function populateInfoWindow(marker, infowindow) {
-
   if (infowindow.marker !== marker) {
     infowindow.marker = marker;
     infowindow.setContent(
@@ -108,7 +107,6 @@ function populateInfoWindow(marker, infowindow) {
     });
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     setTimeout(() => marker.setAnimation(null), 750);
-    //console.log (this.venues.venue.name)
   }
 }
 
@@ -130,12 +128,9 @@ render() {
     </div>
     </div>
   )
-
 }
 
 }
-
-
 
 function loadScript(url) {
   var index = window.document.getElementsByTagName("script")[0]
