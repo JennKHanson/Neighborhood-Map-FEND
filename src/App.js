@@ -70,7 +70,7 @@ const largeInfowindow = new window.google.maps.InfoWindow();
 for (var i = 0; i < this.state.venues.length; i++){
   var position = this.state.venues[i].venue.location;
   var title = this.state.venues[i].venue.name;
-  var address = this.state.venues[i].venue.address;
+  var address = this.state.venues[i].venue.location.address;
 
 //forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
   const marker = new window.google.maps.Marker({
