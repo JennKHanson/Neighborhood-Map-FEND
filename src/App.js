@@ -67,10 +67,9 @@ const largeInfowindow = new window.google.maps.InfoWindow();
 //const bound = new window.google.maps.LatLngBounds(0);
 
 for (var i = 0; i < this.state.venues.length; i++){
-  var position = this.state.venues[i].venue.location;
-  var title = this.state.venues[i].venue.name;
-  var address = this.state.venues[i].venue.location.address;
-
+  const position = this.state.venues[i].venue.location;
+  const title = this.state.venues[i].venue.name;
+  const address = this.state.venues[i].venue.location.address;
 //forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
   const marker = new window.google.maps.Marker({
   position: position,
@@ -82,17 +81,16 @@ for (var i = 0; i < this.state.venues.length; i++){
 });
 
 this.state.markers.push(marker);
+/*for (mark of markers) {marker.animation = window.google.maps.Animation.BOUNCE;
+setTimeout(function(){ marker.setAnimation(null);}, 750);}*/
 
 function markerListener(){
 marker.addListener('click', function(){
   populateInfoWindow(this, largeInfowindow);
   marker.animation = window.google.maps.Animation.BOUNCE;
   setTimeout(function(){ marker.setAnimation(null);}, 750);
-
 });}(markerListener())
-
 }
-
 
 function populateInfoWindow(marker, infowindow) {
 
@@ -105,10 +103,11 @@ function populateInfoWindow(marker, infowindow) {
     infowindow.addListener('closeclick', function(){
       infowindow.setMarker = null;
     });
+    marker.setAnimation(window.google.maps.Animation.BOUNCE);
+    setTimeout(() => marker.setAnimation(null), 750);
     //console.log (this.venues.venue.name)
   }
 }
-
 
 }
 
@@ -122,7 +121,9 @@ render() {
    {/*<MapContainer />*/}
     </div>
     <SearchResults
-    className = "options-box"/>
+    className = "options-box"
+
+    />
     </div>
     </div>
   )

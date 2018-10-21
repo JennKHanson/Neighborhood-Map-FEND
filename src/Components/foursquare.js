@@ -26,4 +26,5 @@ import React from 'react'
     })
 
   }
-  export default getVenues 
+
+  export default getVenues
