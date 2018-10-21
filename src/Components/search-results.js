@@ -27,12 +27,12 @@ venues.map()
     <div className='location-list'>
     <SearchBar/>
 
-      <li></li>
+      <ul>
 
-      <li>
-
-        </li>
-
+      {this.props.locations.map((location) => (
+        console.log(location.venue.name)
+      ))}
+</ul>
     </div>
 
 
