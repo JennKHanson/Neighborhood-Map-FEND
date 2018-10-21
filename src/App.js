@@ -12,9 +12,8 @@ import './App.css';
 //import Map from './Components/map';
 import Title from './Components/title';
 import SearchResults from './Components/search-results';
-import axios from 'axios'
+import axios from 'axios';
 //import MapContainer from './Components/map';
-
 //import SquareAPI from "./API/"
 
 class App extends Component {
@@ -84,10 +83,16 @@ for (var i = 0; i < this.state.venues.length; i++){
 
 this.state.markers.push(marker);
 
+function markerListener(){
 marker.addListener('click', function(){
   populateInfoWindow(this, largeInfowindow);
-});
+  marker.animation = window.google.maps.Animation.BOUNCE;
+  setTimeout(function(){ marker.setAnimation(null);}, 750);
+
+});}(markerListener())
+
 }
+
 
 function populateInfoWindow(marker, infowindow) {
 

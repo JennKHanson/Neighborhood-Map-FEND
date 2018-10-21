@@ -23,9 +23,9 @@ class SearchResults extends React.Component {
     <div className='location-list'>
     <SearchBar/>
     <ul>
-    {/*this.props.locations.map(location => (
-      <li key={location.name} style={{listStyleType:"none"}}>{location.name}test</li>
-    ))*/}
+
+      <li></li>
+
     </ul>
     </div>
 
