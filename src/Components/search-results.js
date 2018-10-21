@@ -24,13 +24,13 @@ venues.map()
 
     return(
 
-    <div className='location-list'>
+    <div className='location-search'>
     <SearchBar/>
 
       <ul>
 
       {this.props.locations.map((location) => (
-        console.log(location.venue.name)
+        <li key ={location.venue.name} style={{listStyleType: "none"}} className='location-list' >{location.venue.name}</li>
       ))}
 </ul>
     </div>
