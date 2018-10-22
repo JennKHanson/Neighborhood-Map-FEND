@@ -3,8 +3,7 @@
 */
 
 import React from 'react'
-//import SearchInput from './search-input'
-//import SearchListItem from './search-list-item'
+//import SearchBar from './search-bar'
 
 class SearchList extends React.Component {
 
@@ -12,7 +11,7 @@ class SearchList extends React.Component {
     return (
     <ol>
       {this.props.locations.map((location) => (
-        <li  onClick={()=> this.props.listItemClick(this.props)} key ={location.venue.name} style={{listStyleType: "none"}} className='location-list'>{location.venue.name}</li>
+        <li onClick={this.props.listItemClick} key ={location.venue.name} style={{listStyleType: "none"}} className='location-list'>{location.venue.name}</li>
       ))}
 </ol>
     )
@@ -24,3 +23,4 @@ export default SearchList
 /*<ol>
 {this.props.locations.map((location) => <SearchListItem {...location}/>)}
 </ol>*/
+//onClick={() => this.props.listItemClick(this.props)}

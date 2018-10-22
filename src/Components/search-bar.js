@@ -3,7 +3,6 @@
 */
 
 import React from 'react'
-//import SearchInput from './search-input'
 import SearchList from './search-list'
 
 class SearchBar extends React.Component {

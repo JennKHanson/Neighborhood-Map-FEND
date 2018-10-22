@@ -99,8 +99,9 @@ marker.addListener('click', function(){
 */
 //I can't access this function ******
 function listItemClick(){
-  console.log(this.state.markers)
+  console.log(this.state.venues)
 }
+
 
 function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker !== marker) {
