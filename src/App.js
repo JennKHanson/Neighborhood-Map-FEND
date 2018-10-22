@@ -16,11 +16,18 @@ import axios from 'axios';
 //import MapContainer from './Components/map';
 //import SquareAPI from "./API/"
 
+
 class App extends Component {
   state = {
     venues: [],
     markers: []
   }
+
+  //***** "Parsing error: Unexpected token" when function is here ******
+  /*
+  function listItemClick(){
+    console.log(this.state.venues)
+  }*/
 
   componentDidMount(){
     this.getVenues()
@@ -33,7 +40,6 @@ class App extends Component {
 
   getVenues = () => {
     const endPoint = "https://api.foursquare.com/v2/venues/explore?";
-
     const parameters = {
       client_id: "C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N",
       client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
@@ -56,7 +62,7 @@ class App extends Component {
 
   }
 
-  initMap = () => {
+  initMap = () => { //closing bracket is in line 127 moving things outside of bracket causes errors
   const map = new window.google.maps.Map(document.getElementById('map'), {
   center: {lat: 39.768403, lng: -86.158068},
   zoom: 10
@@ -77,11 +83,9 @@ for (var i = 0; i < this.state.venues.length; i++){
   address: address,
   animation: window.google.maps.Animation.DROP,
   id: i
-});
+}); // marker object bracket (const marker)
 
 this.state.markers.push(marker);
-/*for (mark of markers) {marker.animation = window.google.maps.Animation.BOUNCE;
-setTimeout(function(){ marker.setAnimation(null);}, 750);}*/
 
 function markerListener(){
 marker.addListener('click', function(){
@@ -90,18 +94,14 @@ marker.addListener('click', function(){
   setTimeout(function(){ marker.setAnimation(null);}, 750);
   this.map.setZoom(13);
   this.map.setCenter(marker.position)
-});}(markerListener())
-}
+}); //marker listener bracket
+}(markerListener()) //markerListener function bracket
+} // for loop bracket
 
-/*function listItemClick(title){
-  console.log(this.state.markers)
-}
-*/
-//I can't access this function ******
-function listItemClick(){
+//***** I can't access this function when it's here ******
+/*function listItemClick(){
   console.log(this.state.venues)
-}
-
+}*/
 
 function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker !== marker) {
@@ -117,9 +117,11 @@ function populateInfoWindow(marker, infowindow) {
     });
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     setTimeout(() => marker.setAnimation(null), 750);
-  }
-}
-}
+  } // if statement bracket
+
+} //populateInfoWindow bracket
+
+} //initMap bracket
 
 
 render() {
@@ -135,9 +137,8 @@ render() {
     className = "options-box"
     locations = {this.state.venues}
     {...this.state} //passing down everything
-    listItemClick={this.props.listItemClick} //******
-    //clickList = {this.props.markerListener}
-    />
+    listItemClick={this.listItemClick} //******
+      />
     </div>
     </div>
   )
@@ -152,8 +153,12 @@ function loadScript(url) {
   script.async = true
   script.defer = true
   index.parentNode.insertBefore(script, index)
-
 }
+
+export default App;
+
+
+
 //Marker Bounds??
 //https://classroom.udacity.com/nanodegrees/nd001/parts/f4471fff-fffb-4281-8c09-2478625c9597/modules/a2527452-bb9f-431c-bfa7-a20b17992650/lessons/8304370457/concepts/83122494450923
 /**
@@ -162,6 +167,3 @@ const bounds = new window.google.maps.LatLngBounds();
 window.bounds.extend(this.state.markers[i].position);
 map.fitBounds(window.bounds);
 **/
-
-
-export default App;
