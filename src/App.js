@@ -11,7 +11,7 @@ import React, { Component } from 'react';
 import './App.css';
 //import Map from './Components/map';
 import Title from './Components/title';
-import SearchResults from './Components/search-results';
+import SearchBar from './Components/search-bar';
 import axios from 'axios';
 //import MapContainer from './Components/map';
 //import SquareAPI from "./API/"
@@ -93,6 +93,15 @@ marker.addListener('click', function(){
 });}(markerListener())
 }
 
+/*function listItemClick(title){
+  console.log(this.state.markers)
+}
+*/
+//I can't access this function ******
+function listItemClick(){
+  console.log(this.state.markers)
+}
+
 function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker !== marker) {
     infowindow.marker = marker;
@@ -109,8 +118,8 @@ function populateInfoWindow(marker, infowindow) {
     setTimeout(() => marker.setAnimation(null), 750);
   }
 }
-
 }
+
 
 render() {
   return (
@@ -121,9 +130,12 @@ render() {
     <div id="map">
    {/*<MapContainer />*/}
     </div>
-    <SearchResults
+    <SearchBar
     className = "options-box"
     locations = {this.state.venues}
+    {...this.state} //passing down everything
+    listItemClick={this.props.listItemClick} //******
+    //clickList = {this.props.markerListener}
     />
     </div>
     </div>

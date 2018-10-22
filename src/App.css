@@ -98,6 +98,7 @@ h1 {
 }
 
 .location-list {
-  text-align: left
+  text-align: left;
+  cursor: pointer;
 
 }

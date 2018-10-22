@@ -8,8 +8,8 @@
 **https://www.npmjs.com/package/google-map-react
 */
 
-import React, {Component} from 'react'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+//import React, {Component} from 'react'
+//import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 //import LocationData from 'react'
 //import { compose, withProps } from "recompose"
@@ -131,6 +131,6 @@ export class MapContainer extends Component {
     )
   }
 }
-export default GoogleApiWrapper({
+/*export default GoogleApiWrapper({
   apiKey: `AIzaSyC1S5nF5e6gJzghv2fAwIGN7IWJuQVzJMg`
-})(MapContainer)
+})(MapContainer)*/
