@@ -100,5 +100,6 @@ h1 {
 .location-list {
   text-align: left;
   cursor: pointer;
+  margin-top: 15px;
 
 }

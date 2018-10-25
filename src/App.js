@@ -9,13 +9,10 @@ J3UTECRMNTKMI2CQZPAUPRENI4DQH0T02Z30DTRT0NXIW5KC*/
 
 import React, { Component } from 'react';
 import './App.css';
-//import Map from './Components/map';
 import Title from './Components/title';
 import SearchBar from './Components/search-bar';
 import axios from 'axios';
-//import MapContainer from './Components/map';
 //import SquareAPI from "./API/"
-
 
 class App extends Component {
   state = {
@@ -23,10 +20,15 @@ class App extends Component {
     markers: []
   }
 
-  //***** "Parsing error: Unexpected token" when function is here ******
-  /*
-  function listItemClick(){
+  listItemClick = () => {
     console.log(this.state.venues)
+  };
+
+
+  //***** "Parsing error: Unexpected token" when function is here ******
+/*
+  function listItemClick(){
+    console.log("test")
   }*/
 
   componentDidMount(){
@@ -67,6 +69,11 @@ class App extends Component {
   center: {lat: 39.768403, lng: -86.158068},
   zoom: 10
 })
+//console.log(this.state.venues);
+/*
+function listItemClick(){
+  console.log(this.state.venues)
+}(listItemClick())*/
 
 const largeInfowindow = new window.google.maps.InfoWindow();
 //const bound = new window.google.maps.LatLngBounds(0);
@@ -101,7 +108,12 @@ marker.addListener('click', function(){
 //***** I can't access this function when it's here ******
 /*function listItemClick(){
   console.log(this.state.venues)
+}(listItemClick())
+*/
+/*listItemClick = ()=> {
+  console.log(this)
 }*/
+//this.listItemClick = this.listItemClick.bind(this);
 
 function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker !== marker) {
@@ -117,12 +129,10 @@ function populateInfoWindow(marker, infowindow) {
     });
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     setTimeout(() => marker.setAnimation(null), 750);
-  } // if statement bracket
-
+  } //if statement bracket
 } //populateInfoWindow bracket
 
 } //initMap bracket
-
 
 render() {
   return (
