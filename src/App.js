@@ -115,13 +115,13 @@ function populateInfoWindow(marker, infowindow) {
 //If I call the listItemClick() here, "'listItemClick' is assigned a value, but never used"
 //I assume because it's in the initMap function
 */
-/*
+
 const listItemClick = venue => {
   const marker = this.state.markers.find(marker => marker.id === venue.name);
   this.markerListener(marker);
   console.log(venue)
 };
-*/
+
 
 } //initMap bracket
 
@@ -129,13 +129,13 @@ const listItemClick = venue => {
 /*
 //If I call the listItemClick() here, "this.markerListener is not a function"
 */
-
+/*
 listItemClick = venue => {
   const marker = this.state.markers.find(marker => marker.id === venue.name);
   this.markerListener(marker);
   console.log(venue)
 };
-
+*/
 
 
 render() {
@@ -151,7 +151,7 @@ render() {
     className = "options-box"
     locations = {this.state.venues}
     {...this.state} //passing down everything
-    listItemClick={this.listItemClick} //******
+    listItemClick={this.listItemClick} 
       />
     </div>
     </div>
