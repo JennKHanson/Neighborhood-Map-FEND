@@ -20,8 +20,8 @@ class App extends Component {
     markers: []
   }
 
-  listItemClick = () => {
-    console.log(this.state.venues)
+  listItemClick = venue => {
+    console.log(venue)
   };
 
 
