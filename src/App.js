@@ -20,10 +20,6 @@ class App extends Component {
     markers: []
   }
 
-  listItemClick = venue => {
-    const marker = this.state.markers.find(marker => marker.id === venue.name);
-    //this.markerListener(marker);
-  }
 
   componentDidMount(){
     this.getVenues()
@@ -115,7 +111,7 @@ function populateInfoWindow(marker, infowindow) {
   } //if statement bracket
 } //populateInfoWindow bracket
 
-/**
+/*
 //If I call the listItemClick() here, "'listItemClick' is assigned a value, but never used"
 //I assume because it's in the initMap function
 */
@@ -123,18 +119,22 @@ function populateInfoWindow(marker, infowindow) {
 const listItemClick = venue => {
   const marker = this.state.markers.find(marker => marker.id === venue.name);
   this.markerListener(marker);
-};*/
+  console.log(venue)
+};
+*/
 
 } //initMap bracket
 
 
-/**
+/*
 //If I call the listItemClick() here, "this.markerListener is not a function"
-*//*
+*/
+
 listItemClick = venue => {
   const marker = this.state.markers.find(marker => marker.id === venue.name);
   this.markerListener(marker);
-};*/
+  console.log(venue)
+};
 
 
 
