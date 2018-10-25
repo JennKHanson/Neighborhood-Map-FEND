@@ -23,21 +23,7 @@ class App extends Component {
   listItemClick = venue => {
     const marker = this.state.markers.find(marker => marker.id === venue.name);
     //this.markerListener(marker);
-    console.log(venue)
-  };
-/*
-  listItemClick = venue => {
-    const marker = this.state.markers.find(marker => marker.id === venue.name);
-    this.markerListener(marker);
-    console.log(venue)
-  };*/
-
-
-  //***** "Parsing error: Unexpected token" when function is here ******
-/*
-  function listItemClick(){
-    console.log("test")
-  }*/
+  }
 
   componentDidMount(){
     this.getVenues()
@@ -77,11 +63,6 @@ class App extends Component {
   center: {lat: 39.768403, lng: -86.158068},
   zoom: 10
 })
-//console.log(this.state.venues);
-/*
-function listItemClick(){
-  console.log(this.state.venues)
-}(listItemClick())*/
 
 const largeInfowindow = new window.google.maps.InfoWindow();
 //const bound = new window.google.maps.LatLngBounds(0);
@@ -101,28 +82,21 @@ for (var i = 0; i < this.state.venues.length; i++){
 }); // marker object bracket (const marker)
 
 this.state.markers.push(marker);
+} //loop bracket
 
-function markerListener(){
-marker.addListener('click', function(){
-  populateInfoWindow(this, largeInfowindow);
-  marker.animation = window.google.maps.Animation.BOUNCE;
-  setTimeout(function(){ marker.setAnimation(null);}, 750);
-  this.map.setZoom(13);
-  this.map.setCenter(marker.position)
-}); //marker listener bracket
-}(markerListener()) //markerListener function bracket
+const markerListener = () => {
+  (this.state.markers).forEach(function(marker){
+  marker.addListener('click', function(){
+    populateInfoWindow(this, largeInfowindow);
+    marker.animation = window.google.maps.Animation.BOUNCE;
+    setTimeout(function(){ marker.setAnimation(null);}, 750);
+    this.map.setZoom(13);
+    this.map.setCenter(marker.position)
+  });
 
-} // for loop bracket
-
-//***** I can't access this function when it's here ******
-/*function listItemClick(){
-  console.log(this.state.venues)
-}(listItemClick())
-*/
-/*listItemClick = ()=> {
-  console.log(this)
-}*/
-//this.listItemClick = this.listItemClick.bind(this);
+})
+}
+markerListener();
 
 function populateInfoWindow(marker, infowindow) {
   if (infowindow.marker !== marker) {
@@ -141,7 +115,28 @@ function populateInfoWindow(marker, infowindow) {
   } //if statement bracket
 } //populateInfoWindow bracket
 
+/**
+//If I call the listItemClick() here, "'listItemClick' is assigned a value, but never used"
+//I assume because it's in the initMap function
+*/
+/*
+const listItemClick = venue => {
+  const marker = this.state.markers.find(marker => marker.id === venue.name);
+  this.markerListener(marker);
+};*/
+
 } //initMap bracket
+
+
+/**
+//If I call the listItemClick() here, "this.markerListener is not a function"
+*//*
+listItemClick = venue => {
+  const marker = this.state.markers.find(marker => marker.id === venue.name);
+  this.markerListener(marker);
+};*/
+
+
 
 render() {
   return (
