@@ -114,8 +114,6 @@ marker.addListener('click', function(){
 
 } // for loop bracket
 
-
-
 //***** I can't access this function when it's here ******
 /*function listItemClick(){
   console.log(this.state.venues)
