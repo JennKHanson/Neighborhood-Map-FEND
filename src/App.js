@@ -21,8 +21,16 @@ class App extends Component {
   }
 
   listItemClick = venue => {
+    const marker = this.state.markers.find(marker => marker.id === venue.name);
+    //this.markerListener(marker);
     console.log(venue)
   };
+/*
+  listItemClick = venue => {
+    const marker = this.state.markers.find(marker => marker.id === venue.name);
+    this.markerListener(marker);
+    console.log(venue)
+  };*/
 
 
   //***** "Parsing error: Unexpected token" when function is here ******
@@ -103,7 +111,10 @@ marker.addListener('click', function(){
   this.map.setCenter(marker.position)
 }); //marker listener bracket
 }(markerListener()) //markerListener function bracket
+
 } // for loop bracket
+
+
 
 //***** I can't access this function when it's here ******
 /*function listItemClick(){
