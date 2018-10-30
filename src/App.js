@@ -6,10 +6,7 @@
 // TODO: When the functions were inside the initMap function, map markers appeared correctly
 with infowindows that appeared on click. Everything worked beautifully until I realized
 that I had to move code out of the initMap function in order to tie the markers
-with the list items. Now that I have begun to move code out of the initMap function,
-I can't get the markers to appear and all of the functionality I had before.
-*/
-
+with the list items. Now that I have begun to move code out of the initMap function*/
 import React, { Component } from 'react';
 import './App.css';
 import Title from './Components/title';
@@ -32,6 +29,7 @@ class App extends Component {
      window.initMap = this.initMap
   }
 
+
   getVenues = () => {
     const endPoint = "https://api.foursquare.com/v2/venues/explore?";
     const parameters = {
@@ -53,69 +51,106 @@ class App extends Component {
     .catch(error => {
       console.log("error! " + error)
     })
+
+
   }
 
-  createMarkers = () => {
-  for (var i = 0; i < this.state.venues.length; i++){
-    const position = this.state.venues[i].venue.location;
-    const title = this.state.venues[i].venue.name;
-    const address = this.state.venues[i].venue.location.address;
-  //forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
-    const marker = new window.google.maps.Marker({
-    position: position,
-    map: this.map, // is "this.map" correct?
-    title: title,
-    address: address,
-    animation: window.google.maps.Animation.DROP,
-    id: i
-  }); // marker object bracket (const marker)
-
-  this.state.markers.push(marker);
-  } //loop bracket
-  }
-
-  initMap = () => { //closing bracket is in line --- moving things outside of bracket causes errors
-   const map = new window.google.maps.Map(document.getElementById('map'), {
-  center: {lat: 39.768403, lng: -86.158068},
+  initMap = () => {
+   const map = new window
+   .google
+   .maps
+   .Map(document.getElementById('map'), {
+  center: {
+    lat: 39.768403,
+    lng: -86.158068
+  },
   zoom: 10
 })
-this.createMarkers(); //is this correct? I don't see markers.
-this.markerListener(); // ?
-//this.populateInfoWindow(); //?
+let markers = [];// added by db
+
+
+for (var i = 0; i < this.state.venues.length; i++){
+  const position = this.state.venues[i].venue.location;
+  const title = this.state.venues[i].venue.name;
+  const address = this.state.venues[i].venue.location.address;
+//forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
+
+
+  const marker = new window
+  .google
+  .maps
+  .Marker({
+  position: position,
+  map: map,
+  title: title,
+  address: address,
+  animation: window.google.maps.Animation.DROP,
+  id: i
+}); // marker object bracket (const marker)
+
+markers.push(marker); //was this.state.push(marker);
+} //loop bracket
+
+this.setState({markers, map}); // added by db
+this.markerListener(); // added by db
 
 //const bound = new window.google.maps.LatLngBounds(0);
 }//initMap bracket
 
 
-largeInfowindow: window.google.maps.InfoWindow; //?
-//const largeInfowindow = window.google.maps.InfoWindow()
+
+
+
+
+
+
+
+
+
+
+
 
 
 markerListener = () => {
-  (this.state.markers).forEach(function(marker){
-  marker.addListener('click', function(){
-    //populateInfoWindow(this, largeInfowindow);
+  let largeInfowindow = new window
+  .google
+  .maps
+  .InfoWindow(); //added by db
+  //const bound = new window.google.maps.LatLngBounds(0).
+  if (!this.state.markers)return;
+  console.log("markers: ", this.state.markers);
+  let newMarkers = this.state.markers.slice();
+  newMarkers.forEach(function(marker){
+  marker
+  .addListener('click', function(){
+    this.populateInfoWindow(this, largeInfowindow); //added this to populateInfoWindow
     marker.animation = window.google.maps.Animation.BOUNCE;
-    setTimeout(function(){ marker.setAnimation(null);}, 750);
-    this.map.setZoom(13);
-    this.map.setCenter(marker.position)
+    setTimeout(function(){
+      marker.setAnimation(null);
+    }, 750);
+    this
+    .map
+    .setZoom(13);
+    this
+    .map
+    .setCenter(marker.position)
   });
 
 })
+this.setState({markers: newMarkers}); // added by db
 }
-//markerListener();
 
 populateInfoWindow = (marker, infowindow) => {
-  if (infowindow.this.marker !== this.marker) {
-    infowindow.this.marker = this.marker;
+  if (infowindow.this.marker !== marker) {
+    infowindow.this.marker = marker;
     infowindow.setContent(
-      '<div>' + this.marker.title + '</div>' +
-      '<div>' + this.marker.address  + '</div>');
-    infowindow.open(this.map, this.marker);
+      '<div>' + marker.title + '</div>' +
+      '<div>' + marker.address  + '</div>');
+    infowindow.open(this.state.map, marker); //this.state.map db
     infowindow.addListener('closeclick', function(){
       infowindow.setMarker = null;
-      this.map.setZoom(10);
-      this.map.setCenter({lat: 39.768403, lng: -86.158068})
+      this.state.map.setZoom(10); //this.state.map db
+      this.state.map.setCenter({lat: 39.768403, lng: -86.158068}) //this.state.map db
     });
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     setTimeout(() => marker.setAnimation(null), 750);
