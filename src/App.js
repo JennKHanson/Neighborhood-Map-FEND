@@ -2,10 +2,13 @@
 * App.js
 */
 /*https://www.npmjs.com/package/axios
-/*Client ID
-C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N
-Client Secret
-J3UTECRMNTKMI2CQZPAUPRENI4DQH0T02Z30DTRT0NXIW5KC*/
+/*
+// TODO: When the functions were inside the initMap function, map markers appeared correctly
+with infowindows that appeared on click. Everything worked beautifully until I realized
+that I had to move code out of the initMap function in order to tie the markers
+with the list items. Now that I have begun to move code out of the initMap function,
+I can't get the markers to appear and all of the functionality I had before.
+*/
 
 import React, { Component } from 'react';
 import './App.css';
@@ -50,92 +53,80 @@ class App extends Component {
     .catch(error => {
       console.log("error! " + error)
     })
-
   }
 
-  initMap = () => { //closing bracket is in line 127 moving things outside of bracket causes errors
-  const map = new window.google.maps.Map(document.getElementById('map'), {
+  createMarkers = () => {
+  for (var i = 0; i < this.state.venues.length; i++){
+    const position = this.state.venues[i].venue.location;
+    const title = this.state.venues[i].venue.name;
+    const address = this.state.venues[i].venue.location.address;
+  //forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
+    const marker = new window.google.maps.Marker({
+    position: position,
+    map: this.map, // is "this.map" correct?
+    title: title,
+    address: address,
+    animation: window.google.maps.Animation.DROP,
+    id: i
+  }); // marker object bracket (const marker)
+
+  this.state.markers.push(marker);
+  } //loop bracket
+  }
+
+  initMap = () => { //closing bracket is in line --- moving things outside of bracket causes errors
+   const map = new window.google.maps.Map(document.getElementById('map'), {
   center: {lat: 39.768403, lng: -86.158068},
   zoom: 10
 })
+this.createMarkers(); //is this correct? I don't see markers.
+this.markerListener(); // ?
+//this.populateInfoWindow(); //?
 
-const largeInfowindow = new window.google.maps.InfoWindow();
 //const bound = new window.google.maps.LatLngBounds(0);
+}//initMap bracket
 
-for (var i = 0; i < this.state.venues.length; i++){
-  const position = this.state.venues[i].venue.location;
-  const title = this.state.venues[i].venue.name;
-  const address = this.state.venues[i].venue.location.address;
-//forEach instead of map? https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the-end-of-arrow-function
-  const marker = new window.google.maps.Marker({
-  position: position,
-  map: map,
-  title: title,
-  address: address,
-  animation: window.google.maps.Animation.DROP,
-  id: i
-}); // marker object bracket (const marker)
 
-this.state.markers.push(marker);
-} //loop bracket
+largeInfowindow: window.google.maps.InfoWindow; //?
+//const largeInfowindow = window.google.maps.InfoWindow()
 
-const markerListener = () => {
+
+markerListener = () => {
   (this.state.markers).forEach(function(marker){
   marker.addListener('click', function(){
-    populateInfoWindow(this, largeInfowindow);
+    //populateInfoWindow(this, largeInfowindow);
     marker.animation = window.google.maps.Animation.BOUNCE;
     setTimeout(function(){ marker.setAnimation(null);}, 750);
-    map.setZoom(13);
-    map.setCenter(marker.position)
+    this.map.setZoom(13);
+    this.map.setCenter(marker.position)
   });
 
 })
 }
-markerListener();
+//markerListener();
 
-function populateInfoWindow(marker, infowindow) {
-  if (infowindow.marker !== marker) {
-    infowindow.marker = marker;
+populateInfoWindow = (marker, infowindow) => {
+  if (infowindow.this.marker !== this.marker) {
+    infowindow.this.marker = this.marker;
     infowindow.setContent(
-      '<div>' + marker.title + '</div>' +
-      '<div>' + marker.address  + '</div>');
-    infowindow.open(map, marker);
+      '<div>' + this.marker.title + '</div>' +
+      '<div>' + this.marker.address  + '</div>');
+    infowindow.open(this.map, this.marker);
     infowindow.addListener('closeclick', function(){
       infowindow.setMarker = null;
-      map.setZoom(10);
-      map.setCenter({lat: 39.768403, lng: -86.158068})
+      this.map.setZoom(10);
+      this.map.setCenter({lat: 39.768403, lng: -86.158068})
     });
     marker.setAnimation(window.google.maps.Animation.BOUNCE);
     setTimeout(() => marker.setAnimation(null), 750);
   } //if statement bracket
 } //populateInfoWindow bracket
 
-/*
-//If I call the listItemClick() here, "'listItemClick' is assigned a value, but never used"
-//I assume because it's in the initMap function
-*/
-/*
-const listItemClick = venue => {
-  const marker = this.state.markers.find(marker => marker.id === venue.name);
-  this.markerListener(marker);
-  console.log(venue)
-};
-*/
-
-} //initMap bracket
-
-
-/*
-//If I call the listItemClick() here, "this.markerListener is not a function"
-*/
-
 listItemClick = venue => {
   const marker = this.state.markers.find(marker => marker.id === venue.name);
-  //markerListener(marker);
-  console.log(venue)
+  this.markerListener(marker);
+  console.log(venue) // This works. It logs the appropriate venue to the console.
 };
-
-
 
 render() {
   return (
