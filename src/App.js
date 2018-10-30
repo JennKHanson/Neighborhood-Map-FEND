@@ -118,7 +118,7 @@ function populateInfoWindow(marker, infowindow) {
 
 const listItemClick = venue => {
   const marker = this.state.markers.find(marker => marker.id === venue.name);
-  this.markerListener(marker);
+  //this.markerListener(marker);
   console.log(venue)
 };
 
@@ -151,7 +151,7 @@ render() {
     className = "options-box"
     locations = {this.state.venues}
     {...this.state} //passing down everything
-    listItemClick={this.listItemClick} 
+    listItemClick={this.listItemClick} //******
       />
     </div>
     </div>
