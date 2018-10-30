@@ -20,7 +20,6 @@ class App extends Component {
     markers: []
   }
 
-
   componentDidMount(){
     this.getVenues()
   }
@@ -86,8 +85,8 @@ const markerListener = () => {
     populateInfoWindow(this, largeInfowindow);
     marker.animation = window.google.maps.Animation.BOUNCE;
     setTimeout(function(){ marker.setAnimation(null);}, 750);
-    this.map.setZoom(13);
-    this.map.setCenter(marker.position)
+    map.setZoom(13);
+    map.setCenter(marker.position)
   });
 
 })
@@ -115,13 +114,13 @@ function populateInfoWindow(marker, infowindow) {
 //If I call the listItemClick() here, "'listItemClick' is assigned a value, but never used"
 //I assume because it's in the initMap function
 */
-
+/*
 const listItemClick = venue => {
   const marker = this.state.markers.find(marker => marker.id === venue.name);
-  //this.markerListener(marker);
+  this.markerListener(marker);
   console.log(venue)
 };
-
+*/
 
 } //initMap bracket
 
@@ -129,13 +128,13 @@ const listItemClick = venue => {
 /*
 //If I call the listItemClick() here, "this.markerListener is not a function"
 */
-/*
+
 listItemClick = venue => {
   const marker = this.state.markers.find(marker => marker.id === venue.name);
-  this.markerListener(marker);
+  //markerListener(marker);
   console.log(venue)
 };
-*/
+
 
 
 render() {
