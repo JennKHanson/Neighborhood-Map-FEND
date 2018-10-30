@@ -129,7 +129,7 @@ let populateInfoWindow = (marker, infowindow) => {
         infowindow.open(this.state.map, marker);
         infowindow.addListener('closeclick', function () {
           infowindow.setMarker = null;
-          this.state.map.setZoom(10);
+          this.state.map.setZoom(10); /// not working
           //this.state.map.setCenter({lat: 39.768403, lng: -86.158068})
         });
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
