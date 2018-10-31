@@ -55,7 +55,7 @@ class App extends Component {
 
   }
 
-  initMap = () => { //closing bracket is in line 127 moving things outside of bracket causes errors
+  initMap = () => {
     const map = new window
       .google
       .maps
@@ -94,22 +94,7 @@ class App extends Component {
     this.setState({markers, map});
     this.markerListener();
 
-
-
-    /*
-//If I call the listItemClick() here, "'listItemClick' is assigned a value, but never used"
-//I assume because it's in the initMap function
-*/
-    /*
-const listItemClick = venue => {
-  const marker = this.state.markers.find(marker => marker.id === venue.name);
-  this.markerListener(marker);
-  console.log(venue)
-};
-*/
-
   } //initMap bracket
-
 
   markerListener = () => {
   let largeInfowindow = new window
@@ -118,9 +103,8 @@ const listItemClick = venue => {
     .InfoWindow();
   //const bound = new window.google.maps.LatLngBounds(0);
   if (!this.state.markers) return;
-  console.log("markers: ", this.state.markers);
+  //console.log("markers: ", this.state.markers);
   let newMarkers = this.state.markers.slice();
-
 
 let populateInfoWindow = (marker, infowindow) => {
       if (infowindow.marker !== marker) {
@@ -128,8 +112,9 @@ let populateInfoWindow = (marker, infowindow) => {
         infowindow.setContent('<div>' + marker.title + '</div><div>' + marker.address + '</div>');
         infowindow.open(this.state.map, marker);
         infowindow.addListener('closeclick', function () {
-          infowindow.setMarker = null;
-          this.state.map.setZoom(10); /// not working
+        infowindow.setMarker = null;
+          //console.log(this.state.map);
+        this.state.map.setZoom(10); /// not working
           //this.state.map.setCenter({lat: 39.768403, lng: -86.158068})
         });
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
@@ -156,17 +141,13 @@ let populateInfoWindow = (marker, infowindow) => {
   })
   this.setState({markers: newMarkers});
 
-
 }
-
-//If I call the listItemClick() here, "this.markerListener is not a function"
-
 
   listItemClick = venue => {
     const marker = this
       .state
       .markers
-      .find(marker => marker.id === venue.name);
+      .find(marker => venue === marker.title);
     this.markerListener(marker);
     console.log(venue)
   };
