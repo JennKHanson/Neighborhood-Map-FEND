@@ -120,19 +120,22 @@ class App extends Component {
   }; //initMap bracket
 
   populateInfoWindow = marker => {
-    //const bound = new window.google.maps.LatLngBounds(0);
+  //  const bound = new window.google.maps.LatLngBounds(0);
     if (!this.state.markers) return;
     //console.log("markers: ", this.state.markers);
     let newMarkers = this.state.markers.slice();
 
     if (this.state.infowindow.marker !== marker) {
-      this.setState.marker = marker;
+      this.setState((marker) => ({
+        marker}));
       this.state.infowindow.setContent(
         "<div>" + marker.title + "</div><div>" + marker.address + "</div>"
       );
       this.state.infowindow.open(this.state.map, marker);
       this.state.infowindow.addListener("closeclick", () => {
-        this.state.infowindow.setMarker = null;
+      //**this.state.infowindow.setMarker = null;** new is below
+      this.setState((marker) => ({
+      }));
         //console.log(this.state.map);
         this.state.map.setZoom(10);
         this.state.map.setCenter({ lat: 39.768403, lng: -86.158068 });
