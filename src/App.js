@@ -2,10 +2,19 @@
 * App.js
 */
 /*https://www.npmjs.com/package/axios
-/*Client ID
-C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N
-Client Secret
-J3UTECRMNTKMI2CQZPAUPRENI4DQH0T02Z30DTRT0NXIW5KC*/
+
+/*
+TODO:
+Line 126 & 127 error: "map is undefined"
+* I understand that this is scope related; however,
+  I don't know how to fix it. When I close an info window, I get the full screen error.
+* See note in line 127.
+TODO:
+Line 161: Code does not work.
+* I am attempting to get the list items to talk to
+  the map markers.
+* See detailed note in line 162.
+*/
 
 import React, {Component} from 'react';
 import './App.css';
@@ -113,15 +122,17 @@ let populateInfoWindow = (marker, infowindow) => {
         infowindow.open(this.state.map, marker);
         infowindow.addListener('closeclick', function () {
         infowindow.setMarker = null;
-          //console.log(this.state.map);
-        this.state.map.setZoom(10); // not working **map is undefined
+        //console.log(this.state.map);
+        this.state.map.setZoom(10);
         this.state.map.setCenter({lat: 39.768403, lng: -86.158068})
+        // ** code does not work **
+        // map is undefined
+        // It is undefined because of a scope issue that I don't know how to fix
         });
         marker.setAnimation(window.google.maps.Animation.BOUNCE);
         setTimeout(() => marker.setAnimation(null), 750);
       } //if statement bracket
     } //populateInfoWindow bracket
-
 
   newMarkers.forEach(function (marker) {
     marker
@@ -148,8 +159,13 @@ let populateInfoWindow = (marker, infowindow) => {
       .state
       .markers
       .find(marker => venue === marker.title);
+      // ** code does not work **
+      // Code: If venue matches marker title, then apply markerListener()
+      // venue and marker.title log with the same information
+      // I think the problem is in the markerListener() code
     this.markerListener(marker);
     console.log(venue)
+    console.log(marker.title)
   };
 
   render() {
