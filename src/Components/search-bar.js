@@ -6,6 +6,35 @@ import React from 'react'
 import SearchList from './search-list'
 
 class SearchBar extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      query: ""
+    };
+
+  }
+
+  handleFilterVenues = () => {};
+
+  handleChange = e => {
+    this.setState({ query: e.target.value });
+    console.log(this.props.venues)
+
+    const markers = this.props.venues.map(venue => {
+      const isMatched = venue.venue.location.name
+      .toLowerCase()
+      .includes(e.target.value.toLowerCase());
+      const marker = this.props.markers.find(marker =>  venue === marker.title);
+      if(isMatched) {
+        marker.isVisible = true;
+      } else {
+        marker.isVisible = false;
+      }
+      return marker;
+    });
+    this.props.updateSuperState({markers})
+
+  };
 
   render() {
     //33:39 https://drive.google.com/drive/u/0/folders/1QpvhhOn_FzgB8k7TBM1jolOXdpbmbOdb
@@ -13,7 +42,12 @@ class SearchBar extends React.Component {
     <div className='location-search'>
     {/* was search-input */}
     <div className="search-bar-container">
-    <input type="search" className="search-bar" placeholder="Filter Parks..."/>
+    <input
+      type="search"
+      className="search-bar"
+      placeholder="Filter Parks..."
+      onChange={this.handleChange}
+    />
     </div>
 
     <SearchList {...this.props} listItemClick={this.props.listItemClick}/>

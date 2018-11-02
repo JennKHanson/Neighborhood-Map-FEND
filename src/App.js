@@ -28,7 +28,10 @@ class App extends Component {
     venues: [],
     markers: [],
     map: null,
-    infowindow: null
+    infowindow: null,
+    updateSuperState: obj => {
+      this.setState(obj)
+    }
   };
 
   componentWillMount() {
