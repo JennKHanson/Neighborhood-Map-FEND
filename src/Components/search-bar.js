@@ -10,22 +10,23 @@ class SearchBar extends React.Component {
     super();
     this.state = {
       query: ""
-    };
-
+    }
   }
 
   handleFilterVenues = () => {};
 
   handleChange = e => {
+    console.log(this.props.venues) //logs the array of two objects
+    //this.props.venue.location.name "should" get the name of the location;
+    //however, when typing in the search box, I get the error
+    //that location is undefined. Why is it undefined?
     this.setState({ query: e.target.value });
-    console.log(this.props.venues)
-
     const markers = this.props.venues.map(venue => {
-      const isMatched = venue.venue.location.name
+      const isMatched = this.props.venue.location.name
       .toLowerCase()
       .includes(e.target.value.toLowerCase());
       const marker = this.props.markers.find(marker =>  venue === marker.title);
-      if(isMatched) {
+      if(isMatched) { // will probably have to change this... TBD
         marker.isVisible = true;
       } else {
         marker.isVisible = false;
