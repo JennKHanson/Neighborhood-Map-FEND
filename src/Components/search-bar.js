@@ -17,6 +17,7 @@ class SearchBar extends React.Component {
 
   handleChange = e => {
     console.log(this.props.venues) //logs the array of two objects
+
     //this.props.venue.location.name "should" get the name of the location;
     //however, when typing in the search box, I get the error
     //that location is undefined. Why is it undefined?
