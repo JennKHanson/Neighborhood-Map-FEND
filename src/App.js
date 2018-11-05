@@ -1,23 +1,11 @@
 /**
  * App.js
  */
-/*https://www.npmjs.com/package/axios
-
-/*
-TODO:
-Line 126 & 127 error: "map is undefined"
-* I understand that this is scope related; however,
-  I don't know how to fix it. When I close an info window, I get the full screen error.
-* See note in line 127.
-TODO:
-Line 161: Code does not work.
-* I am attempting to get the list items to talk to
-  the map markers.
-* See detailed note in line 162.
-*/
+/*https://www.npmjs.com/package/axios*/
 
 import React, { Component } from "react";
 import "./App.css";
+import "./responsive.css"
 import Title from "./Components/title";
 import SearchBar from "./Components/search-bar";
 import axios from "axios";
@@ -165,9 +153,16 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <Title />
-          <div id="map">{/*<MapContainer />*/}</div>
+          <div
+          id="map"
+          role="application"
+          aria-label="Map with park locations"
+          >
+          {/*<MapContainer />*/}</div>
+
           <SearchBar
             className="options-box"
+            id="parks"
             locations={this.state.venues}
             {...this.state} //passing down everything
             listItemClick={this.listItemClick} //******

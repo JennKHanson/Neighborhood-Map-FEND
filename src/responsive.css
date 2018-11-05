@@ -9,11 +9,65 @@
 
 @media screen and (min-width: 950px) {
 
-  
+
 }
   /* === TABLETS === */
 
 @media screen and (min-width: 721px) {
+
+      .title {
+        width: 100%;
+        height: 75px;
+        background-color: #252831;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 3px;
+        margin: auto;
+        order: 1;
+      }
+      #map {
+        height: 60%;
+        top: 80px;
+        width: 100%;
+        position: absolute;
+        order: 2;
+        margin: auto;
+      }
+
+
+      input {
+        font-size: 12px;
+      }
+
+  .location-search {
+    background: #fff;
+    border: 2px solid #999;
+    border-radius: 5px;
+    line-height: 25px;
+    margin-top: 350px;
+    width: 250px;
+    height: 20%;
+    flex-direction: column;
+    order: 3;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.location-list {
+  font-size: 18px;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: -100px;
+}
+
 
 }
 
@@ -22,11 +76,180 @@
 @media screen and (min-width: 551px) and (max-width: 720px) {
 
 
+    .title {
+      width: 100%;
+      height: 60px;
+      background-color: #252831;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 3px;
+      margin: auto;
+      order: 1;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column; /*default*/
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    input {
+      font-size: 12px;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 38px;
+      margin: 15px 0 10px 20px;
+      text-align: left;
+      font-weight: 100;
+    }
+
+    .hidden-link {
+      font-size: 12px;
+    }
+    /*
+    #hide-listings,
+    #show-listings {
+      width: 48%;
+    }
+    */
+    #map {
+      height: 60%;
+      top: 80px;
+      width: 100%;
+      position: absolute;
+      order: 2;
+      margin: auto;
+    }
+
+    .search-bar-container {
+      top: 300px;
+    }
+
+
+      .location-search {
+        background: #fff;
+        border: 2px solid #999;
+        border-radius: 5px;
+        line-height: 25px;
+        margin-top: 375px;
+        width: 250px;
+        height: 20%;
+        flex-direction: column;
+        order: 3;
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+    .location-list {
+      font-size: 18px;
+      text-align: left;
+      cursor: pointer;
+      margin-top: 5px;
+      margin-left: -100px;
+    }
+
+
+
 }
 
 
 /* === CELL PHONES AND SOME TABLETS === */
 
 @media screen and (min-width: 100px) and (max-width: 550px) {
+
+
+  .title {
+    width: 100%;
+    height: 60px;
+    background-color: #252831;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px;
+    margin: auto;
+    order: 1;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column; /*default*/
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  input {
+    font-size: 12px;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 32px;
+    margin: 15px 0 10px 20px;
+    text-align: left;
+    font-weight: 100;
+  }
+
+  .hidden-link {
+    font-size: 12px;
+  }
+  /*
+  #hide-listings,
+  #show-listings {
+    width: 48%;
+  }
+  */
+  #map {
+    height: 60%;
+    top: 80px;
+    width: 100%;
+    position: absolute;
+    order: 2;
+    margin: auto;
+  }
+
+  .search-bar-container {
+    top: 500px;
+  }
+
+  .location-search {
+    background: #fff;
+    border: 2px solid #999;
+    border-radius: 5px;
+    line-height: 25px;
+    margin-top: 375px;
+    width: 250px;
+    height: 20%;
+    flex-direction: column;
+    order: 3;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .location-list {
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: -100px;
+  }
+
 
 }

@@ -3,7 +3,6 @@
 */
 
 import React from 'react'
-//import SearchBar from './search-bar'
 
 class SearchList extends React.Component {
 
@@ -25,11 +24,3 @@ class SearchList extends React.Component {
 
 
 export default SearchList
-//**I tried both of these**
-//onClick={() => this.props.listItemClick(this.props)}
-//onClick={this.props.listItemClick}
-
-
-/*<ol>
-{this.props.locations.map((location) => <SearchListItem {...location}/>)}
-</ol>*/

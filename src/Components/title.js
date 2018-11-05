@@ -9,6 +9,8 @@ class Title extends React.Component {
     return(
       <nav className="title">
       <h1>Indy Parks</h1>
+      <a href="#parks" className="hidden-link" tabIndex="1">Take me to parks list</a>
+
       </nav>
     )
   }
