@@ -224,12 +224,3 @@ function loadScript(url) {
 }
 
 export default App;
-
-// Marker Bounds??
-// https://classroom.udacity.com/nanodegrees/nd001/parts/f4471fff-fffb-4281-8c09-2478625c9597/modules/a2527452-bb9f-431c-bfa7-a20b17992650/lessons/8304370457/concepts/83122494450923
-/**
-this.state.markers.push(marker);
-const bounds = new window.google.maps.LatLngBounds();
-window.bounds.extend(this.state.markers[i].position);
-map.fitBounds(window.bounds);
-**/
