@@ -5,7 +5,7 @@
 
 import React, { Component } from "react";
 import "./App.css";
-//import "./responsive.css"
+import "./responsive.css"
 import Title from "./Components/title";
 import SearchBar from "./Components/search-bar";
 import axios from "axios";

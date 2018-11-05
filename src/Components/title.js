@@ -10,7 +10,6 @@ class Title extends React.Component {
       <nav className="title">
       <h1>Indy Parks</h1>
       <a href="#parks" className="hidden-link" tabIndex="0">Take me to parks list</a>
-
       </nav>
     )
   }

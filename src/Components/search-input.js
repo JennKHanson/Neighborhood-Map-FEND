@@ -1,5 +1,5 @@
 /**
-* Input Component
+* Search-Input Component
 */
 
 import React from 'react'

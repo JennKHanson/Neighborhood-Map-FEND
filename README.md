@@ -28,3 +28,9 @@ Open [http://localhost:3000](http://localhost:3000) to view the app in the brows
 * Map data: Google Maps API
 
 * Map location data: Foursquare API
+
+* NPM Axios Package
+https://www.npmjs.com/package/axios
+
+* Flexbox
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/

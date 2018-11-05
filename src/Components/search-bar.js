@@ -1,5 +1,5 @@
 /**
- * Search Component
+ * Search-Bar Component
  */
 
 import React from "react";
