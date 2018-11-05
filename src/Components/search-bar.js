@@ -48,7 +48,8 @@ class SearchBar extends React.Component {
   render() {
     //33:39 https://drive.google.com/drive/u/0/folders/1QpvhhOn_FzgB8k7TBM1jolOXdpbmbOdb
     return (
-      <div className="location-search">
+      <div className="location-search"
+      id="parks">
         {/* was search-input */}
         <div className="search-bar-container">
           <input

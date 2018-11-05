@@ -51,7 +51,7 @@ class App extends Component {
       client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
       query: "parks",
       near: "Indianapolis",
-      limit: 5,
+      limit: 3,
       v: "20181018"
     };
 
@@ -124,9 +124,9 @@ class App extends Component {
 
       markers.push(marker);
       bounds.extend(marker.position);
-        /*map.fitBounds(bounds);*/
     } //loop bracket
-map.fitBounds(bounds)
+    map.fitBounds(bounds); //marker bounds
+
     /**
      * Markers Click Event
      */
