@@ -124,7 +124,7 @@ class App extends Component {
   }; //initMap bracket
 
   populateInfoWindow = marker => {
-  //  const bound = new window.google.maps.LatLngBounds(0);
+    //const bound = new window.google.maps.LatLngBounds(0);
     if (!this.state.markers) return;
     //console.log("markers: ", this.state.markers);
     let newMarkers = this.state.markers.slice();
@@ -156,10 +156,6 @@ class App extends Component {
   listItemClick = venue => {
     console.log(venue);
     const marker = this.state.markers.find(marker => venue === marker.title);
-    // ** code does not work **
-    // Code: If venue matches marker title, then apply markerListener()
-    // venue and marker.title log with the same information
-    // I think the problem is in the markerListener() code
     this.populateInfoWindow(marker);
     console.log(marker.title);
   };
