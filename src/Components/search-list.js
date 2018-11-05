@@ -11,12 +11,18 @@ class SearchList extends React.Component {
     return (
     <ol>
       {this.props.locations.map((location) => (
-        <li onClick={() => this.props.listItemClick(location.venue.name)} key ={location.venue.name} style={{listStyleType: "none"}} className='location-list'>{location.venue.name}</li>
+        <li
+        onClick={() => this.props.listItemClick(location.venue.name)}
+        onKeyDown={()=> this.props.listItemClick(location.venue.name)}
+        style={{listStyleType: "none"}}
+        key={location.venue.name}
+        tabIndex="0" className='location-list'>{location.venue.name}</li>
       ))}
 </ol>
     )
 
   }}
+
 
 export default SearchList
 //**I tried both of these**
