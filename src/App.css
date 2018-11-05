@@ -63,10 +63,14 @@ h1 {
 
 .search-bar {
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   height: 30px;
   border-radius: 4px;
   margin: 200px, 0, 10px, 0;
+}
+
+.search-bar-container {
+  width: 200px;
 }
 
 .marker-info {

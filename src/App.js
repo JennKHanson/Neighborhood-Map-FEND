@@ -135,7 +135,7 @@ class App extends Component {
     /**
      * Markers Click Event
      */
-    this.setState({ markers: markers });
+  this.setState({ markers: markers });
     this.state.markers.forEach(marker => {
       marker.addListener("click", () => {
         this.populateInfoWindow(marker);
