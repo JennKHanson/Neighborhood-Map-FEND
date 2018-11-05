@@ -11,8 +11,7 @@ class SearchList extends React.Component {
     <ol>
       {this.props.locations.map((location) => (
         <li
-        onClick={() => this.props.listItemClick(location.venue.name)}
-        onKeyDown={()=> this.props.listItemClick(location.venue.name)}
+        onFocus={()=> this.props.listItemClick(location.venue.name)}
         style={{listStyleType: "none"}}
         key={location.venue.name}
         tabIndex="0" className='location-list'>{location.venue.name}</li>

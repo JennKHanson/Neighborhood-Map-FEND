@@ -28,7 +28,12 @@ class App extends Component {
    */
   componentWillMount() {
     this.getVenues();
-  }
+
+  window.gm_authFailure = () =>
+    alert(
+      "Google Maps is have trouble loading."
+    );
+}
 
   /**
    * Create Google Map

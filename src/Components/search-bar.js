@@ -10,7 +10,7 @@ class SearchBar extends React.Component {
     super();
     this.state = {
       query: "",
-      searchLocations: []
+      searchLocations: [],
     };
   }
   componentWillReceiveProps = () => {
@@ -21,17 +21,22 @@ class SearchBar extends React.Component {
 
   handleFilterVenues = value => {
     const tempVenues = [];
+    //const markers = [];
     this.props.venues.map(venue => {
       if (venue.venue.name.toLowerCase().includes(value.toLowerCase())) {
         tempVenues.push(venue);
         this.props.markers.forEach(marker => {
-          if (venue.venue.name === marker.title) {
-            marker.setVisible(true); // this functionality still needs work
+          console.log(tempVenues)
+          //console.log(marker.title)
+          //console.log(venue.venue.name)
+          if (marker.title === venue.venue.name) {
+            marker.setVisible(true); // I need to access the values of tempVenues
           } else {
-            marker.setVisible(false); // especially here
+            marker.setVisible(false); //
           }
         });
       }
+
       this.setState({
         searchLocations: tempVenues // list is updated as changes occur
       });
@@ -50,7 +55,6 @@ class SearchBar extends React.Component {
     return (
       <div className="location-search"
       id="parks">
-        {/* was search-input */}
         <div className="search-bar-container">
           <input
             type="search"
