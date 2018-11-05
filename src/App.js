@@ -102,7 +102,8 @@ class App extends Component {
         title: title,
         address: address,
         animation: window.google.maps.Animation.DROP,
-        id: i
+        id: i,
+        tabIndex: 0
       }); // marker object bracket (const marker)
 
       markers.push(marker);

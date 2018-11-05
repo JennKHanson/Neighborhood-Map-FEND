@@ -56,6 +56,7 @@ class SearchBar extends React.Component {
             className="search-bar"
             placeholder="Filter Parks..."
             onChange={this.handleChange}
+            aria-label="search text"
           />
         </div>
 
