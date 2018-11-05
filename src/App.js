@@ -5,7 +5,7 @@
 
 import React, { Component } from "react";
 import "./App.css";
-import "./responsive.css"
+//import "./responsive.css"
 import Title from "./Components/title";
 import SearchBar from "./Components/search-bar";
 import axios from "axios";
@@ -41,7 +41,7 @@ class App extends Component {
       client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
       query: "parks",
       near: "Indianapolis",
-      limit: 5,
+      limit: 1,
       v: "20181018"
     };
 
@@ -159,7 +159,6 @@ class App extends Component {
           aria-label="Map with park locations"
           >
           {/*<MapContainer />*/}</div>
-
           <SearchBar
             className="options-box"
             id="parks"

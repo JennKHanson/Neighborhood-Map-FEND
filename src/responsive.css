@@ -9,11 +9,70 @@
 
 @media screen and (min-width: 950px) {
 
+        .title {
+          width: 100%;
+          height: 75px;
+          background-color: #252831;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border: 3px;
+          margin: auto;
+          order: 1;
+        }
+        #map {
+          height: 100%;
+          max-height: 400px;
+          top: 95px;
+          width: 100%;
+          max-width: 720px;
+          position: absolute;
+          order: 2;
+          margin: auto;
+        }
+
+
+        input {
+          font-size: 12px;
+        }
+
+    .location-search {
+      background: #fff;
+      border: 2px solid #999;
+      border-radius: 5px;
+      line-height: 25px;
+      margin-top: 450px;
+      width: 100%;
+      max-width: 250px;
+      height: 20%;
+      flex-direction: column;
+      order: 3;
+      display: flex;
+      align-items: center;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  .location-list {
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-left: -100px;
+  }
+
+
+
 
 }
   /* === TABLETS === */
+  /*iPad 768x1024 */
 
-@media screen and (min-width: 721px) {
+@media screen and (min-width: 721px) and (max-width: 949px){
 
       .title {
         width: 100%;
@@ -28,9 +87,11 @@
         order: 1;
       }
       #map {
-        height: 60%;
-        top: 80px;
+        height: 100%;
+        max-height: 350px;
+        top: 100px;
         width: 100%;
+        max-width: 720px;
         position: absolute;
         order: 2;
         margin: auto;
@@ -46,8 +107,9 @@
     border: 2px solid #999;
     border-radius: 5px;
     line-height: 25px;
-    margin-top: 350px;
-    width: 250px;
+    margin-top: 425px;
+    width: 100%;
+    max-width: 250px;
     height: 20%;
     flex-direction: column;
     order: 3;
@@ -137,8 +199,9 @@
         border: 2px solid #999;
         border-radius: 5px;
         line-height: 25px;
-        margin-top: 375px;
-        width: 250px;
+        /*margin-top: 420px;*/
+        width: 100%;
+        max-width: 250px;
         height: 20%;
         flex-direction: column;
         order: 3;
@@ -152,7 +215,7 @@
       }
 
     .location-list {
-      font-size: 18px;
+      font-size: 15px;
       text-align: left;
       cursor: pointer;
       margin-top: 5px;
@@ -165,6 +228,8 @@
 
 
 /* === CELL PHONES AND SOME TABLETS === */
+/*Pixel2 411x731*/
+
 
 @media screen and (min-width: 400px) and (max-width: 550px) {
 
@@ -207,7 +272,8 @@
   }
   */
   #map {
-    height: 50%;
+    height: 100%;
+    max-height: 350px;
     top: 80px;
     width: 100%;
     position: absolute;
@@ -224,8 +290,9 @@
     border: 2px solid #999;
     border-radius: 5px;
     line-height: 25px;
-    margin-top: 350px;
-    width: 250px;
+    margin-top: 400px;
+    width: 100%;
+    max-width: 250px;
     height: 20%;
     flex-direction: column;
     order: 3;
@@ -239,7 +306,7 @@
   }
 
   .location-list {
-    font-size: 15px;
+    font-size: 12px;
     text-align: left;
     cursor: pointer;
     margin-top: 5px;
@@ -248,6 +315,8 @@
 
 
 }
+/*iPhone X 375x812*/
+/*iPhone 6/7/8 375x667*/
 @media screen and (min-width: 371px) and (max-width: 399px) {
 
     h1 {
@@ -266,7 +335,7 @@
     #map {
       height: 50%;
       top: 60px;
-      width: 100%;
+      width: 370px;
       position: absolute;
       order: 2;
       margin: auto;
@@ -277,8 +346,9 @@
         border: 2px solid #999;
         border-radius: 5px;
         line-height: 25px;
-        margin-top: 350px;
-        width: 250px;
+        /*margin-top: 425px;*/
+        width: 100%;
+        max-width: 250px;
         height: 20%;
         flex-direction: column;
         order: 3;
@@ -300,6 +370,7 @@
       }
 
     }
+    /*Galaxy S5 360*/
 @media screen and (min-width: 100px) and (max-width: 370px) {
 
 
@@ -318,7 +389,8 @@
     }
 
     #map {
-      height: 50%;
+      height: 100%;
+      max-height: 350px;
       top: 60px;
       width: 100%;
       position: absolute;
@@ -331,8 +403,9 @@
         border: 2px solid #999;
         border-radius: 5px;
         line-height: 25px;
-        margin-top: 350px;
-        width: 250px;
+        margin-top: 400px;
+        width: 100%;
+        max-width: 200px;
         height: 20%;
         flex-direction: column;
         order: 3;
@@ -346,7 +419,7 @@
       }
 
       .location-list {
-        font-size: 15px;
+        font-size: 12px;
         text-align: left;
         cursor: pointer;
         margin-top: 5px;
