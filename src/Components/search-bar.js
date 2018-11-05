@@ -31,9 +31,10 @@ class SearchBar extends React.Component {
           //console.log(venue.venue.name)
           if (marker.title === venue.venue.name) {
             marker.setVisible(true); // I need to access the values of tempVenues
-          } else {
-            marker.setVisible(false); //
+          } else if (marker.title !== venue.venue.name) {
+            marker.setVisible(false);
           }
+  
         });
       }
 
