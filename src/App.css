@@ -49,12 +49,6 @@ h1 {
   font-weight: 100;
 
 }
-/*
-#hide-listings,
-#show-listings {
-  width: 48%;
-}
-*/
 
 #map {
   height: 400px;
@@ -65,18 +59,12 @@ h1 {
   margin-right: auto;
 }
 
-
 .search-bar {
   width: 100%;
   max-width: 200px;
   height: 30px;
   border-radius: 4px;
   margin: 200px, 0, 10px, 0;
-}
-
-
-.search-bar-container {
-
 }
 
 .marker-info {
