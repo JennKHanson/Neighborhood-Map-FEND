@@ -10,8 +10,6 @@ import Title from "./Components/title";
 import SearchBar from "./Components/search-bar";
 import Footer from "./Components/footer";
 import axios from "axios";
-
-
 //import SquareAPI from "./API/"
 
 class App extends Component {
@@ -25,10 +23,16 @@ class App extends Component {
     }
   };
 
+  /**
+   * Get Foursqure venues after page loads
+   */
   componentWillMount() {
     this.getVenues();
   }
 
+  /**
+   * Create Google Map
+   */
   renderMap = () => {
     loadScript(
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyC1S5nF5e6gJzghv2fAwIGN7IWJuQVz" +
@@ -37,6 +41,9 @@ class App extends Component {
     window.initMap = this.initMap;
   };
 
+  /**
+   * Fetch Foursquare venues
+   */
   getVenues = () => {
     const endPoint = "https://api.foursquare.com/v2/venues/explore?";
     const parameters = {
@@ -59,10 +66,13 @@ class App extends Component {
         );
       })
       .catch(error => {
-        console.log("error! " + error);
+        alert("error! " + error);
       });
   };
 
+  /**
+   * Map Function
+   */
   initMap = () => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
       center: {
@@ -72,6 +82,15 @@ class App extends Component {
       zoom: 10
     });
     const largeInfowindow = new window.google.maps.InfoWindow();
+    const bounds = new window.google.maps.LatLngBounds();
+
+    /*var bounds = {
+        north: 39.927392,
+        south: 39.632177,
+        east: -85.937379,
+        west: -86.328121
+      };
+      map.fitBounds(bounds);*/
 
     this.setState({
       map: map,
@@ -79,14 +98,18 @@ class App extends Component {
     });
 
     let markers = [];
-
+    /**
+     * Loop over Foursquare venues to create markers
+     */
     for (var i = 0; i < this.state.venues.length; i++) {
       const position = this.state.venues[i].venue.location;
       const title = this.state.venues[i].venue.name;
       const address = this.state.venues[i].venue.location.address;
+
       // forEach instead of map?
       // https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the
       // -end-of-arrow-function
+
       const marker = new window.google.maps.Marker({
         position: position,
         map: map,
@@ -95,11 +118,18 @@ class App extends Component {
         animation: window.google.maps.Animation.DROP,
         id: i,
         tabIndex: 0
-      }); // marker object bracket (const marker)
+      }
+
+    ); // marker object bracket (const marker)
 
       markers.push(marker);
+      bounds.extend(marker.position);
+        /*map.fitBounds(bounds);*/
     } //loop bracket
-
+map.fitBounds(bounds)
+    /**
+     * Markers Click Event
+     */
     this.setState({ markers: markers });
     this.state.markers.forEach(marker => {
       marker.addListener("click", () => {
@@ -110,12 +140,15 @@ class App extends Component {
         }, 750);
         this.state.map.setZoom(13);
         this.state.map.setCenter(marker.position);
+
       });
     });
   }; //initMap bracket
 
+  /**
+   * Info Window Function
+   */
   populateInfoWindow = marker => {
-    //const bound = new window.google.maps.LatLngBounds(0);
     if (!this.state.markers) return;
     //console.log("markers: ", this.state.markers);
     let newMarkers = this.state.markers.slice();
@@ -128,24 +161,22 @@ class App extends Component {
       );
       this.state.infowindow.open(this.state.map, marker);
       this.state.infowindow.addListener("closeclick", () => {
-      //**this.state.infowindow.setMarker = null;** new is below
       this.setState((marker) => ({
       }));
-        //console.log(this.state.map);
         this.state.map.setZoom(10);
         this.state.map.setCenter({ lat: 39.768403, lng: -86.158068 });
-        // ** code does not work **
-        // map is undefined
-        // It is undefined because of a scope issue that I don't know how to fix
       });
       marker.setAnimation(window.google.maps.Animation.BOUNCE);
       setTimeout(() => marker.setAnimation(null), 750);
     } //if statement bracket
     this.setState({ markers: newMarkers });
+
   };
 
+  /**
+   * Venue List Click Event
+   */
   listItemClick = venue => {
-    console.log(venue);
     const marker = this.state.markers.find(marker => venue === marker.title);
     this.populateInfoWindow(marker);
     console.log(marker.title);
@@ -188,9 +219,7 @@ function loadScript(url) {
 export default App;
 
 // Marker Bounds??
-// https://classroom.udacity.com/nanodegrees/nd001/parts/f4471fff-fffb-4281-8c09-
-// 2478625c9597/modules/a2527452-bb9f-431c-bfa7-a20b17992650/lessons/8304370457/c
-// oncepts/83122494450923
+// https://classroom.udacity.com/nanodegrees/nd001/parts/f4471fff-fffb-4281-8c09-2478625c9597/modules/a2527452-bb9f-431c-bfa7-a20b17992650/lessons/8304370457/concepts/83122494450923
 /**
 this.state.markers.push(marker);
 const bounds = new window.google.maps.LatLngBounds();
