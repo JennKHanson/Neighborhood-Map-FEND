@@ -114,7 +114,6 @@ class App extends Component {
       // forEach instead of map?
       // https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the
       // -end-of-arrow-function
-
       const marker = new window.google.maps.Marker({
         position: position,
         map: map,
@@ -143,8 +142,10 @@ class App extends Component {
         setTimeout(() => {
           marker.setAnimation(null);
         }, 750);
-        this.state.map.setZoom(13);
-        this.state.map.setCenter(marker.position);
+        let newMap = this.state.map;
+        newMap.setZoom(13);
+        newMap.setCenter(marker.position);
+        this.setState({map: newMap});
 
       });
     });
@@ -164,6 +165,7 @@ class App extends Component {
       this.state.infowindow.setContent(
         "<div>" + marker.title + "</div><div>" + marker.address + "</div>"
       );
+
       this.state.infowindow.open(this.state.map, marker);
       this.state.infowindow.addListener("closeclick", () => {
       this.setState((marker) => ({

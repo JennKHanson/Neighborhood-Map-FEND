@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
   handleFilterVenues = value => {
     const tempVenues = [];
     //const markers = [];
-    this.props.venues.map(venue => {
+    this.props.venues.forEach(venue => {
       if (venue.venue.name.toLowerCase().includes(value.toLowerCase())) {
         tempVenues.push(venue);
         this.props.markers.forEach(marker => {
