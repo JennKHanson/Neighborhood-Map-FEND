@@ -34,7 +34,7 @@ class SearchBar extends React.Component {
           } else if (marker.title !== venue.venue.name) {
             marker.setVisible(false);
           }
-  
+
         });
       }
 
