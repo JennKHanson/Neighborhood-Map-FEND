@@ -25,12 +25,11 @@ body {
   align-items: center;
   border: 3px;
   margin: auto;
-  position:
 }
 
 .container {
   width: 100%;
-  display:flex;
+  display: flex;
   flex-direction: column; /*default*/
   flex-wrap: wrap;
   justify-content: space-around;
@@ -47,7 +46,6 @@ h1 {
   margin: 20px 0 10px 20px;
   text-align: left;
   font-weight: 100;
-
 }
 
 #map {
@@ -61,7 +59,7 @@ h1 {
 
 .search-bar {
   width: 100%;
-  max-width: 200px;
+  max-width: 300px;
   height: 30px;
   border-radius: 4px;
   margin: 200px, 0, 10px, 0;
@@ -93,8 +91,29 @@ h1 {
 }
 
 .location-list {
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   margin-top: 5px;
-  margin-left: -100px;
+}
+
+.footer {
+  width: 100%;
+  order: 4;
+  height: 40px;
+  background-color: #252831;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px;
+  margin-top: 500px;
+}
+
+h2 {
+  color: #fff;
+  font-size: 12px;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: left;
+  font-weight: 100;
 }
