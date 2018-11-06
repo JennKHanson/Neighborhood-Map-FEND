@@ -60,7 +60,7 @@ class App extends Component {
       client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
       query: "parks",
       near: "Indianapolis",
-      limit: 10,
+      limit: 5,
       v: "20181018"
     };
 
