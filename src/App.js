@@ -111,11 +111,9 @@ class App extends Component {
       const position = this.state.venues[i].venue.location;
       const title = this.state.venues[i].venue.name;
       const address = this.state.venues[i].venue.location.address;
-
       // forEach instead of map?
       // https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the
       // -end-of-arrow-function
-
       const marker = new window.google.maps.Marker({
         position: position,
         map: map,
@@ -125,15 +123,14 @@ class App extends Component {
         id: i,
         tabIndex: 0
       }
-
     ); // marker object bracket (const marker)
 
       markers.push(marker);
       bounds.extend(marker.position);
     } //loop bracket
-  
-    map.fitBounds(bounds); //marker bounds
 
+  map.fitBounds(bounds); //marker bounds
+console.log(this.state.venues)
     /**
      * Markers Click Event
      */
@@ -150,6 +147,7 @@ class App extends Component {
 
       });
     });
+
   }; //initMap bracket
 
   /**

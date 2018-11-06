@@ -33,23 +33,25 @@ class SearchBar extends React.Component {
     });
   };
 /*
-  handleChange = e => {
-    this.setState(
-      { query: e.target.value },
-      this.handleFilterVenues(e.target.value)
-    );
-  };*/
+handleChange = e => {
+  this.setState(
+    { query: e.target.value },
+    this.handleFilterVenues(e.target.value)
+  );
+};
+*/
 
   // Ryan Waite: https://www.youtube.com/watch?v=5J6fs_BlVC0&feature=youtu.be
-  handleChange(query){
+  handleChange(query, e ){
     this.props.markers.forEach(marker => {
       marker.title.toLowerCase().includes(query.toLowerCase()) === true ?
       marker.setVisible(true) :
       marker.setVisible(false)
   });
-      //console.log(marker.title)
-    this.setState({ query });
+      this.setState({ query });
     console.log(query)
+      this.handleFilterVenues(query)
+
   }
 
   render() {
@@ -66,13 +68,25 @@ class SearchBar extends React.Component {
             aria-label="search text"
             value={this.state.query} // is this necessary?
           />
+          {/*<br/>
+          {
+            this.state.searchLocations && this.state.searchLocations.length > 0 && this.state.searchLocations.map((venue, index)=>(
+              <div >
+              test
+              {this.venue.name}
+              //{console.log(this.state.searchLocations)}
+              </div>
+            )
+          )
+        }*/}
+          <SearchList
+         {...this.props}
+         locations={this.state.searchLocations} // now passed as an explicit list from search-bar to SearchList, which ensures it updates as changes occur
+         listItemClick={this.props.listItemClick}
+       />
+
         </div>
 
-        <SearchList
-          {...this.props}
-          locations={this.state.searchLocations} // now passed as an explicit list from search-bar to SearchList, which ensures it updates as changes occur
-          listItemClick={this.props.listItemClick}
-        />
       </div>
     );
   }
