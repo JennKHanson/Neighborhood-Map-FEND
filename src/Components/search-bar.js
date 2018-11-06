@@ -51,8 +51,9 @@ handleChange = e => {
       this.setState({ query });
     console.log(query)
       this.handleFilterVenues(query)
-
   }
+
+
 
   render() {
     //33:39 https://drive.google.com/drive/u/0/folders/1QpvhhOn_FzgB8k7TBM1jolOXdpbmbOdb
@@ -66,22 +67,12 @@ handleChange = e => {
             placeholder="Filter Parks..."
             onChange={(e) => {this.handleChange(e.target.value)}}
             aria-label="search text"
-            value={this.state.query} // is this necessary?
+            value={this.state.query}
+            //onClick={this.handleClick}
           />
-          {/*<br/>
-          {
-            this.state.searchLocations && this.state.searchLocations.length > 0 && this.state.searchLocations.map((venue, index)=>(
-              <div >
-              test
-              {this.venue.name}
-              //{console.log(this.state.searchLocations)}
-              </div>
-            )
-          )
-        }*/}
           <SearchList
          {...this.props}
-         locations={this.state.searchLocations} // now passed as an explicit list from search-bar to SearchList, which ensures it updates as changes occur
+         locations={this.state.searchLocations}
          listItemClick={this.props.listItemClick}
        />
 

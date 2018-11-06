@@ -34,7 +34,6 @@ class App extends Component {
       "Google Maps is have trouble loading."
     );
 }
-
   /**
    * Create Google Map
    */
@@ -130,11 +129,14 @@ class App extends Component {
     } //loop bracket
 
   map.fitBounds(bounds); //marker bounds
-console.log(this.state.venues)
+  console.log(this.state.venues)
+
     /**
      * Markers Click Event
      */
     this.setState({ markers: markers });
+
+  const markerClick = () =>(
     this.state.markers.forEach(marker => {
       marker.addListener("click", () => {
         this.populateInfoWindow(marker);
@@ -146,7 +148,8 @@ console.log(this.state.venues)
         this.state.map.setCenter(marker.position);
 
       });
-    });
+    }))
+    return (markerClick())
 
   }; //initMap bracket
 
