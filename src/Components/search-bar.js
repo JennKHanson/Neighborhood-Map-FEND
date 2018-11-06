@@ -22,15 +22,16 @@ class SearchBar extends React.Component {
   handleFilterVenues = value => {
     const tempVenues = [];
     //const markers = [];
-    this.props.venues.map(venue => {
-      if (venue.venue.name.toLowerCase().includes(value.toLowerCase())) {
+    this.props.venues.forEach(venue => {
+      if ((venue.venue.name.toLowerCase().includes(value.toLowerCase())) &
+      (this.state.query.trim() !== "")) {
         tempVenues.push(venue);
         this.props.markers.forEach(marker => {
           console.log(tempVenues)
           //console.log(marker.title)
           //console.log(venue.venue.name)
-          if (marker.title === venue.venue.name) {
-            marker.setVisible(true); // I need to access the values of tempVenues
+          if ((marker.title === venue.venue.name)  || (this.state.query.trim() === "")) {
+            marker.setVisible(true);
           } else if (marker.title !== venue.venue.name) {
             marker.setVisible(false);
           }
