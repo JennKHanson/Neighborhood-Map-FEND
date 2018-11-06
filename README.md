@@ -57,4 +57,4 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 * Ryan Waite Walkthrough
  https://www.youtube.com/watch?v=5J6fs_BlVC0&feature=youtu.be
 
-* Thanks to
+* A huge thank you goes to my fellow Udacity scholars for helping me throughout the course. A special thanks goes to Jason Michael White, Doug Brown, Sachin Sharmam, and Brenda for helping me complete Project 7. Also, I wouldn't have finished without the incredible Indiana cohort of Daphne, Sarah, Therese, Fate, Crystal, Jamila, and Aly!

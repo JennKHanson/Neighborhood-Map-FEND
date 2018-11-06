@@ -5,7 +5,7 @@
 /*
 * TODO: Clean responsive.css
 * TODO: Make sidebar with hamburger menu
-* TODO:
+* TODO: Fix overall design. :)
 */
 
 import React, { Component } from "react";
