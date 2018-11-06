@@ -110,9 +110,6 @@ class App extends Component {
       const position = this.state.venues[i].venue.location;
       const title = this.state.venues[i].venue.name;
       const address = this.state.venues[i].venue.location.address;
-      // forEach instead of map?
-      // https://stackoverflow.com/questions/45014094/expected-to-return-a-value-at-the
-      // -end-of-arrow-function
       const marker = new window.google.maps.Marker({
         position: position,
         map: map,
@@ -131,28 +128,27 @@ class App extends Component {
   map.fitBounds(bounds); //marker bounds
   console.log(this.state.venues)
 
-    /**
-     * Markers Click Event
-     */
     this.setState({ markers: markers });
-
-  const markerClick = () =>(
-    this.state.markers.forEach(marker => {
-      marker.addListener("click", () => {
-        this.populateInfoWindow(marker);
-        marker.animation = window.google.maps.Animation.BOUNCE;
-        setTimeout(() => {
-          marker.setAnimation(null);
-        }, 750);
-        this.state.map.setZoom(13);
-        this.state.map.setCenter(marker.position);
-
-      });
-    }))
-    return (markerClick())
+    return (this.markerListener())
 
   }; //initMap bracket
 
+  /**
+   * Markers Click Event
+   */
+  markerListener = venue => {
+      this.state.markers.forEach(marker => {
+        marker.addListener("click", () => {
+          this.populateInfoWindow(marker);
+          marker.animation = window.google.maps.Animation.BOUNCE;
+          setTimeout(() => {
+            marker.setAnimation(null);
+          }, 750);
+          this.state.map.setZoom(13);
+          this.state.map.setCenter(marker.position);
+
+        });
+      })}
   /**
    * Info Window Function
    */
@@ -187,6 +183,7 @@ class App extends Component {
   listItemClick = venue => {
     const marker = this.state.markers.find(marker => venue === marker.title);
     this.populateInfoWindow(marker);
+    //this.markerClick(marker);
     console.log(marker.title);
   };
 
