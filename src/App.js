@@ -2,6 +2,11 @@
  * App.js
  */
 /*https://www.npmjs.com/package/axios*/
+/*
+* TODO: Clean responsive.css
+* TODO: Make sidebar with hamburger menu
+* TODO:
+*/
 
 import React, { Component } from "react";
 import "./App.css";
@@ -10,7 +15,6 @@ import Title from "./Components/title";
 import SearchBar from "./Components/search-bar";
 import Footer from "./Components/footer";
 import axios from "axios";
-//import SquareAPI from "./API/"
 
 class App extends Component {
   state = {
@@ -34,6 +38,7 @@ class App extends Component {
       "Google Maps is have trouble loading."
     );
 }
+
   /**
    * Create Google Map
    */
@@ -55,7 +60,7 @@ class App extends Component {
       client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
       query: "parks",
       near: "Indianapolis",
-      limit: 3,
+      limit: 10,
       v: "20181018"
     };
 
@@ -88,24 +93,16 @@ class App extends Component {
     const largeInfowindow = new window.google.maps.InfoWindow();
     const bounds = new window.google.maps.LatLngBounds();
 
-    /*var bounds = {
-        north: 39.927392,
-        south: 39.632177,
-        east: -85.937379,
-        west: -86.328121
-      };
-      map.fitBounds(bounds);*/
-
     this.setState({
       map: map,
       infowindow: largeInfowindow
     });
 
     let markers = [];
+
     /**
      * Loop over Foursquare venues to create markers
      */
-
     for (var i = 0; i < this.state.venues.length; i++) {
       const position = this.state.venues[i].venue.location;
       const title = this.state.venues[i].venue.name;
@@ -127,10 +124,8 @@ class App extends Component {
 
   map.fitBounds(bounds); //marker bounds
   console.log(this.state.venues)
-
     this.setState({ markers: markers });
     return (this.markerListener())
-
   }; //initMap bracket
 
   /**
@@ -149,14 +144,13 @@ class App extends Component {
 
         });
       })}
+
   /**
    * Info Window Function
    */
   populateInfoWindow = marker => {
     if (!this.state.markers) return;
-    //console.log("markers: ", this.state.markers);
     let newMarkers = this.state.markers.slice();
-
     if (this.state.infowindow.marker !== marker) {
       this.setState((marker) => ({
         marker}));
@@ -183,9 +177,18 @@ class App extends Component {
   listItemClick = venue => {
     const marker = this.state.markers.find(marker => venue === marker.title);
     this.populateInfoWindow(marker);
-    //this.markerClick(marker);
-    console.log(marker.title);
+    this.state.map.setZoom(13);
+    this.state.map.setCenter(marker.position)
   };
+
+  handleInputClick = () => {
+    this.map.center = {
+      lat: 39.768403,
+      lng: -86.158068
+    }
+    this.state.map.setZoom(10)
+  };
+
 
   render() {
     return (
@@ -202,8 +205,9 @@ class App extends Component {
             className="options-box"
             id="parks"
             locations={this.state.venues}
-            {...this.state} //passing down everything
-            listItemClick={this.listItemClick} //******
+            {...this.state}
+            listItemClick={this.listItemClick}
+            handleInputClick={this.handleInputClick}
           />
           <Footer/>
         </div>
@@ -222,12 +226,3 @@ function loadScript(url) {
 }
 
 export default App;
-
-// Marker Bounds??
-// https://classroom.udacity.com/nanodegrees/nd001/parts/f4471fff-fffb-4281-8c09-2478625c9597/modules/a2527452-bb9f-431c-bfa7-a20b17992650/lessons/8304370457/concepts/83122494450923
-/**
-this.state.markers.push(marker);
-const bounds = new window.google.maps.LatLngBounds();
-window.bounds.extend(this.state.markers[i].position);
-map.fitBounds(window.bounds);
-**/

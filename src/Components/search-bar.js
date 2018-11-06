@@ -15,31 +15,24 @@ class SearchBar extends React.Component {
   }
   componentWillReceiveProps = () => {
     this.setState({
-      searchLocations: this.props.venues // passed explicitly from App, used to set initial list
+      //sets locations list
+      searchLocations: this.props.venues
     });
   };
 
   handleFilterVenues = value => {
     const tempVenues = [];
-    //const markers = [];
     this.props.venues.forEach(venue => {
       if (venue.venue.name.toLowerCase().includes(value.toLowerCase())) {
         tempVenues.push(venue);
       }
 
       this.setState({
-        searchLocations: tempVenues // list is updated as changes occur
+        // list is updated as changes occur
+        searchLocations: tempVenues
       });
     });
   };
-/*
-handleChange = e => {
-  this.setState(
-    { query: e.target.value },
-    this.handleFilterVenues(e.target.value)
-  );
-};
-*/
 
   // Ryan Waite: https://www.youtube.com/watch?v=5J6fs_BlVC0&feature=youtu.be
   handleChange(query, e ){
@@ -51,9 +44,11 @@ handleChange = e => {
       this.setState({ query });
     console.log(query)
       this.handleFilterVenues(query)
+      /*const test = this.handleInputClick();
+      this.setState({
+        test:test
+      })*/
   }
-
-
 
   render() {
     //33:39 https://drive.google.com/drive/u/0/folders/1QpvhhOn_FzgB8k7TBM1jolOXdpbmbOdb
@@ -68,7 +63,6 @@ handleChange = e => {
             onChange={(e) => {this.handleChange(e.target.value)}}
             aria-label="search text"
             value={this.state.query}
-            //onClick={this.handleClick}
           />
           <SearchList
          {...this.props}

@@ -59,6 +59,7 @@ h1 {
 
 .hidden-link {
   color: white;
+  outline: none;
 }
 
 .search-bar {

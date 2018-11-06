@@ -2,6 +2,7 @@
  * CSS Responsive
  */
 
+
 @charset "utf-8";
 
 /* == DESKTOPS, LAPTOPS, IPAD === */
@@ -343,9 +344,9 @@
     };
 }
 
-    /* === SMALLER CELL PHONES === */
-    /*Galaxy S5 360x640*/
-    /*iPhone 5/SE 320x568*/
+/* === SMALLER CELL PHONES === */
+/*Galaxy S5 360x640*/
+/*iPhone 5/SE 320x568*/
 @media screen and (min-width: 100px) and (max-width: 370px) {
 
     h1 {
