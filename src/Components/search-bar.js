@@ -23,21 +23,8 @@ class SearchBar extends React.Component {
     const tempVenues = [];
     //const markers = [];
     this.props.venues.forEach(venue => {
-      if ((venue.venue.name.toLowerCase().includes(value.toLowerCase())) &
-      (this.state.query.trim() !== "")) {
+      if (venue.venue.name.toLowerCase().includes(value.toLowerCase())) {
         tempVenues.push(venue);
-        this.props.markers.forEach(marker => {
-          console.log(tempVenues)
-          //console.log(marker.title)
-          //console.log(venue.venue.name)
-          if ((marker.title === venue.venue.name)  || (this.state.query.trim() == "")) {
-            marker.setVisible(true); // I need to access the values of tempVenues
-          } else if (marker.title !== venue.venue.name) {
-
-            marker.setVisible(false);
-          }
-
-        });
       }
 
       this.setState({
@@ -45,13 +32,25 @@ class SearchBar extends React.Component {
       });
     });
   };
-
+/*
   handleChange = e => {
     this.setState(
       { query: e.target.value },
       this.handleFilterVenues(e.target.value)
     );
-  };
+  };*/
+
+  // Ryan Waite: https://www.youtube.com/watch?v=5J6fs_BlVC0&feature=youtu.be
+  handleChange(query){
+    this.props.markers.forEach(marker => {
+      marker.title.toLowerCase().includes(query.toLowerCase()) === true ?
+      marker.setVisible(true) :
+      marker.setVisible(false)
+  });
+      //console.log(marker.title)
+    this.setState({ query });
+    console.log(query)
+  }
 
   render() {
     //33:39 https://drive.google.com/drive/u/0/folders/1QpvhhOn_FzgB8k7TBM1jolOXdpbmbOdb
@@ -63,8 +62,9 @@ class SearchBar extends React.Component {
             type="search"
             className="search-bar"
             placeholder="Filter Parks..."
-            onChange={this.handleChange}
+            onChange={(e) => {this.handleChange(e.target.value)}}
             aria-label="search text"
+            value={this.state.query} // is this necessary?
           />
         </div>
 

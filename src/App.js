@@ -106,6 +106,7 @@ class App extends Component {
     /**
      * Loop over Foursquare venues to create markers
      */
+
     for (var i = 0; i < this.state.venues.length; i++) {
       const position = this.state.venues[i].venue.location;
       const title = this.state.venues[i].venue.name;
@@ -130,6 +131,7 @@ class App extends Component {
       markers.push(marker);
       bounds.extend(marker.position);
     } //loop bracket
+  
     map.fitBounds(bounds); //marker bounds
 
     /**
