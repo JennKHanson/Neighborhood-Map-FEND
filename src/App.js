@@ -44,7 +44,7 @@ class App extends Component {
    */
   renderMap = () => {
     loadScript(
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyC1S5nF5e6gJzghv2fAwIGN7IWJuQVz" +
+      "https://maps.googleapis.com/maps/api/js?key=APIKEYGOESHERE" +
         "JMg&v=3&callback=initMap"
     );
     window.initMap = this.initMap;
@@ -56,8 +56,8 @@ class App extends Component {
   getVenues = () => {
     const endPoint = "https://api.foursquare.com/v2/venues/explore?";
     const parameters = {
-      client_id: "C5WGCVHUQG4VSB0T0B5MC5X3ZVDPRAOAOSUBIS1ZR33ICL4N",
-      client_secret: "IJB11IVJOLTYP01KV2AASJ0BMG53HI3ET5FKT4JH3WGMJAYP",
+      client_id: "",
+      client_secret: "",
       query: "parks",
       near: "Indianapolis",
       limit: 15,
@@ -116,17 +116,17 @@ class App extends Component {
         id: i,
         tabIndex: 0
       }
-    ); // marker object bracket (const marker)
+    );
 
       markers.push(marker);
       bounds.extend(marker.position);
-    } //loop bracket
+    }
 
   map.fitBounds(bounds); //marker bounds
   console.log(this.state.venues)
     this.setState({ markers: markers });
     return (this.markerListener())
-  }; //initMap bracket
+  };
 
   /**
    * Markers Click Event
@@ -166,7 +166,7 @@ class App extends Component {
       });
       marker.setAnimation(window.google.maps.Animation.BOUNCE);
       setTimeout(() => marker.setAnimation(null), 750);
-    } //if statement bracket
+    }
     this.setState({ markers: newMarkers });
 
   };
@@ -200,7 +200,7 @@ class App extends Component {
           role="application"
           aria-label="Map with park locations"
           >
-          {/*<MapContainer />*/}</div>
+          </div>
           <SearchBar
             className="options-box"
             id="parks"

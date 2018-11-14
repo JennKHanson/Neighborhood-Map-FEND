@@ -18,7 +18,7 @@ class SearchList extends React.Component {
         >
         {location.venue.name}</div>
       ))}
-</div>
+      </div>
     )
 
   }}

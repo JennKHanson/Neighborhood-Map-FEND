@@ -34,7 +34,7 @@ https://review.udacity.com/#!/rubrics/1351/view
   * Type 'npm run build'
   * Type 'serve -s build'
     localhost:5000 should automatically launch in the browser. If it doesn't, open [http://localhost:5000](http://localhost:5000) to view the app in the browser.
-* A service worker has been implemented and will work for production build
+* A service worker has been implemented and will work for production build.
 
 ## API Keys
 Foursquare and Google Maps requires the following API keys:
