@@ -40,7 +40,7 @@ https://review.udacity.com/#!/rubrics/1351/view
 Foursquare and Google Maps requires the following API keys:
 Foursquare: Client_id and client_secret
 Google: API key
-These are to be placed in the App.js file were designated.
+These are to be placed in the App.js file.
 
 ## References
 * Map data: Google Maps API
